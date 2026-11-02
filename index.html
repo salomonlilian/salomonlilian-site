@@ -319,6 +319,70 @@
   @media (max-width: 960px) { .discoveries { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 520px) { .discoveries { grid-template-columns: 1fr; } }
 
+  /* IN THE PRESS */
+  .press-wrap { padding: 96px 80px; background: var(--ink); }
+  .press-inner { max-width: 1200px; margin: 0 auto; }
+  .press-feature {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center;
+    border-top: 1px solid var(--stone); border-bottom: 1px solid var(--stone); padding: 48px 0; margin-top: 48px;
+  }
+  .press-quote {
+    font-family: 'Cormorant Garant', serif; font-style: italic; font-weight: 300;
+    font-size: 34px; line-height: 1.3; color: var(--ivory);
+  }
+  .press-quote-text::before { content: '“'; color: var(--gold); }
+  .press-quote-text::after { content: '”'; color: var(--gold); }
+  .press-quote-by { display: block; margin-top: 18px; font-family: 'Inter', sans-serif; font-style: normal; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--mist); }
+  .press-kicker { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: block; }
+  .press-feature-title { font-family: 'Cormorant Garant', serif; font-style: italic; font-size: 26px; color: var(--ivory); margin-bottom: 14px; }
+  .press-feature-text { font-size: 13px; line-height: 1.9; color: var(--mist); margin-bottom: 22px; }
+  .press-btn {
+    all: unset; cursor: pointer; display: inline-block; padding: 14px 22px; border: 1px solid var(--gold);
+    color: var(--gold); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; transition: background 0.3s, color 0.3s;
+  }
+  .press-btn:hover, .press-btn:focus-visible { background: var(--gold); color: var(--ink); }
+  .press-list { list-style: none; margin-top: 8px; }
+  .press-item { border-bottom: 1px solid var(--stone); }
+  .press-item a {
+    display: grid; grid-template-columns: 220px 1fr auto; gap: 32px; align-items: baseline;
+    padding: 26px 0; text-decoration: none; color: inherit;
+  }
+  .press-source { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); line-height: 1.7; }
+  .press-source span { display: block; color: var(--mist); letter-spacing: 2px; margin-top: 4px; }
+  .press-headline { font-family: 'Cormorant Garant', serif; font-style: italic; font-size: 21px; color: var(--ivory); margin-bottom: 6px; transition: color 0.3s; }
+  .press-summary { font-size: 12px; line-height: 1.8; color: var(--mist); }
+  .press-arrow { color: var(--gold); font-size: 14px; }
+  .press-item a:hover .press-headline { color: var(--gold); }
+  .press-friend { margin-top: 40px; font-size: 11px; letter-spacing: 1px; color: var(--mist); }
+  .press-friend a { color: var(--gold); text-decoration: none; }
+  .press-dialog {
+    width: min(760px, calc(100vw - 32px)); max-height: calc(100vh - 32px); margin: auto; padding: 0;
+    border: 1px solid var(--stone); background: var(--ink); color: var(--ivory);
+  }
+  .press-dialog::backdrop { background: rgba(5,4,3,0.86); backdrop-filter: blur(2px); }
+  .press-dialog-body { padding: 64px 64px 48px; overflow-y: auto; max-height: calc(100vh - 34px); }
+  .press-dialog h2 { font-family: 'Cormorant Garant', serif; font-style: italic; font-weight: 400; font-size: 34px; line-height: 1.2; margin: 10px 0 8px; }
+  .press-dialog .iv-meta { font-size: 11px; color: var(--mist); margin-bottom: 32px; }
+  .press-dialog p { font-size: 13.5px; line-height: 1.95; opacity: 0.9; margin-bottom: 16px; }
+  .press-dialog p.iv-intro:first-of-type { font-size: 14px; color: var(--ivory); }
+  .press-dialog p.iv-q { font-family: 'Cormorant Garant', serif; font-style: italic; font-size: 20px; line-height: 1.45; color: var(--gold); opacity: 1; margin: 30px 0 10px; }
+  .press-dialog .iv-fig { margin: 34px 0; text-align: center; }
+  .press-dialog .iv-fig img { max-width: 100%; max-height: 520px; display: inline-block; }
+  .press-dialog .iv-fig-wide img { max-height: none; width: 100%; }
+  .press-dialog .iv-fig figcaption { margin-top: 12px; font-size: 11px; letter-spacing: 0.5px; color: var(--mist); }
+  .press-dialog .iv-fig figcaption em { color: var(--ivory); opacity: 0.85; }
+  .press-dialog .iv-credit { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--stone); font-size: 11px; line-height: 1.8; color: var(--mist); opacity: 1; }
+  .press-dialog .iv-credit a { color: var(--gold); text-decoration: none; }
+  @media (max-width: 820px) {
+    .press-wrap { padding: 72px 24px; }
+    .press-feature { grid-template-columns: 1fr; gap: 32px; }
+    .press-quote { font-size: 27px; }
+    .press-item a { grid-template-columns: 1fr; gap: 8px; }
+    .press-arrow { display: none; }
+    .press-dialog-body { padding: 56px 22px 32px; }
+    .press-dialog h2 { font-size: 27px; }
+  }
+
   /* PROVENANCE & RESEARCH */
   .research-wrap { background: var(--panel); padding: 80px; }
   .research-inner { max-width: 1200px; margin: 0 auto; }
@@ -523,6 +587,7 @@
     .location-card { padding: 36px 28px; }
     .location-city { font-size: 36px; }
     footer { padding: 32px 24px; flex-direction: column; gap: 18px; text-align: center; }
+    .contact-line a { font-size: 19px; letter-spacing: 0; overflow-wrap: anywhere; }
   }
 </style>
 </head>
@@ -533,6 +598,7 @@
   <ul class="nav-links">
     <li><a href="#collection">Collection</a></li>
     <li><a href="#research">Expertise</a></li>
+    <li><a href="#press">Press</a></li>
     <li><a href="#fairs">Fairs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -843,6 +909,96 @@
   </div>
 </div>
 
+<!-- IN THE PRESS -->
+<div class="press-wrap" id="press">
+  <div class="press-inner">
+    <div class="section-header reveal" style="margin-bottom:0">
+      <h2 class="section-title">In the <em>press</em></h2>
+    </div>
+    <div class="press-feature reveal">
+      <p class="press-quote"><span class="press-quote-text">A painting must be sexy, must appeal to the senses.</span><span class="press-quote-by">Salomon Lilian</span></p>
+      <div>
+        <span class="press-kicker">CODART eZine · Autumn 2016</span>
+        <div class="press-feature-title">Salomon Lilian interviewed by Gerdien Verschoor</div>
+        <p class="press-feature-text">On learning to look, the first mistakes and the first breakthrough, the touch of a painting, and why Amsterdam can once again be the centre of the trade in Old Masters.</p>
+        <button type="button" class="press-btn" id="press-open">Read the interview</button>
+      </div>
+    </div>
+    <ul class="press-list">
+      <li class="press-item reveal"><a href="https://weltreporter.net/wp-content/uploads/2024/04/F2404060.013.pdf" target="_blank" rel="noopener">
+        <span class="press-source">Frankfurter Allgemeine Zeitung<span>6 April 2024</span></span>
+        <span><span class="press-headline" style="display:block">Wer ist der Mann mit rotem Hut?</span><span class="press-summary">Kerstin Schweighöfer tells how Salomon Lilian spotted the Swabian portrait of a man with a red hat in a Barcelona sale, and bought it at almost thirty times its estimate.</span></span>
+        <span class="press-arrow" aria-hidden="true">→</span>
+      </a></li>
+      <li class="press-item reveal"><a href="https://artdaily.com/news/167457/At-TEFAF-Art-Fair--museums-make-up-for-shrinking-private-sales" target="_blank" rel="noopener">
+        <span class="press-source">The New York Times<span>March 2024</span></span>
+        <span><span class="press-headline" style="display:block">At TEFAF Art Fair, museums make up for shrinking private sales</span><span class="press-summary">Scott Reyburn reports from TEFAF Maastricht, where Salomon Lilian discusses the strong demand for top-quality Old Master paintings.</span></span>
+        <span class="press-arrow" aria-hidden="true">→</span>
+      </a></li>
+      <li class="press-item reveal"><a href="https://www.sothebys.com/en/articles/salomon-lilian-gallery-geneva" target="_blank" rel="noopener">
+        <span class="press-source">Sotheby’s<span>12 June 2020</span></span>
+        <span><span class="press-headline" style="display:block">Salomon Lilian Gallery, Geneva</span><span class="press-summary">A portrait of the gallery, “one of the leading international dealers and experts in the field of Old Masters”, with works sold to the Rijksmuseum, the Mauritshuis and the Cleveland Museum of Art.</span></span>
+        <span class="press-arrow" aria-hidden="true">→</span>
+      </a></li>
+      <li class="press-item reveal"><a href="https://www.theartnewspaper.com/2020/03/04/can-you-teach-an-old-master-fair-new-tricks" target="_blank" rel="noopener">
+        <span class="press-source">The Art Newspaper<span>4 March 2020</span></span>
+        <span><span class="press-headline" style="display:block">Can you teach an Old Master fair new tricks?</span><span class="press-summary">Salomon Lilian on selling Old Masters to American museums, including the Museum of Fine Arts, Boston, the Cleveland Museum of Art and the Art Institute of Chicago.</span></span>
+        <span class="press-arrow" aria-hidden="true">→</span>
+      </a></li>
+      <li class="press-item reveal"><a href="https://theartnewspaper.com/analysis/from-tribal-art-to-old-master-paintings-taking-the-market-s-temperature-at-tefaf-maastricht" target="_blank" rel="noopener">
+        <span class="press-source">The Art Newspaper<span>19 March 2019</span></span>
+        <span><span class="press-headline" style="display:block">From tribal art to Old Master paintings: taking the market’s temperature at TEFAF Maastricht</span><span class="press-summary">Jasper Hillegers of the gallery on the search for fresh material, as Willem Drost’s Cimon and Pero finds a buyer on the opening day.</span></span>
+        <span class="press-arrow" aria-hidden="true">→</span>
+      </a></li>
+    </ul>
+    <p class="press-friend reveal">Salomon Lilian is a proud Friend of <a href="https://www.codart.nl/" target="_blank" rel="noopener">CODART</a>, the international network of curators of Dutch and Flemish art.</p>
+  </div>
+</div>
+
+<dialog class="press-dialog" id="press-dialog" aria-labelledby="press-dialog-title">
+  <button class="entry-close" type="button" aria-label="Close">&times;</button>
+  <div class="press-dialog-body">
+    <span class="press-kicker">CODART eZine · Autumn 2016</span>
+    <h2 id="press-dialog-title">Salomon Lilian interviewed by Gerdien Verschoor</h2>
+    <div class="iv-meta">By Gerdien Verschoor · September 2016</div>
+      <figure class="iv-fig iv-fig-wide"><img src="images/codart-interview-salomon-lilian.jpg" alt="Salomon Lilian" loading="lazy"><figcaption>Salomon Lilian</figcaption></figure>
+      <p class="iv-intro">Salomon Lilian founded his company, Salomon Lilian Dutch Old Master Paintings, in 1989. It is based in Amsterdam and also has a branch in Geneva. Lilian specializes in paintings by the Dutch Old Masters and publishes an annual catalog with essays about the most important items in his collection. Salomon Lilian became a CODART business sponsor in 2015.</p>
+      <p class="iv-intro">Barely had I crossed the threshold of his business on Spiegelgracht in Amsterdam before Lilian started giving me the first lesson in my life in feeling a work of art. “Just touch that,” he said. “These buttons on this portrait of Cornelis de Vos. Do you feel it? The three-dimensionality of the painting, the material, the paint that is here in the buttons on the canvas. That’s what art is about, as far as I’m concerned: of course it’s about the picture itself and its significance, but above all it’s the material quality that transcends that picture. And just feel the back! It still has the original stretcher and the original nails. Touching a painting like that gives you a gut feeling for it.”</p>
+      <figure class="iv-fig"><img src="images/codart-interview-cornelis-de-vos.jpg" alt="Cornelis de Vos, Portrait of a Woman" loading="lazy"><figcaption>Cornelis de Vos, <em>Portrait of a Woman</em></figcaption></figure>
+      <p class="iv-q">In a museum you would …</p>
+      <p class="iv-a">… never be able to touch that painting. That’s why I’d never want to work in a museum. As a dealer – or a collector of course – you have far more freedom in how you handle your works of art. And that physical contact, that touch, is something I find particularly important. And this too, for instance. [produces cotton pads and a bottle of turpentine and casually wipes clean the surface of a new purchase, The Backgammon Players by Willem Duyster.] Just look at the three-dimensionality that suddenly leaps out at you! That’s another big difference from a museum, of course: as an art dealer you put your own money into a painting; time and again you take a big risk, so you have to be confident you know who painted it, and how.</p>
+      <p class="iv-q">You were originally destined to follow in your father’s footsteps as an optician. It is remarkable that although you eventually chose a different profession, it was one in which looking is so important.</p>
+      <p class="iv-a">It’s true. My father had an optician’s shop and he suddenly died when I was nineteen. So I qualified as an optician as quickly as possible and took over the business. But I soon realized that this was not my calling. It was through the antiques firm of my mother’s family, the Stodels, that I first became inspired to study art history. Those were very tough years, dividing the week between working at the optician’s and studying. Looking back, I think it’s a pity I had so little time for real student life, and never joined a fraternity, for instance.</p>
+      <p class="iv-q">Did you know from the outset that you would focus on the Old Masters?</p>
+      <p class="iv-a">Yes, that was clear from the beginning. Mainly through the Stodels’ influence, but then I met Rob Noortman quite early on, and he encouraged me to stay focused on the Old Masters. In 1990 I got a credit starter loan from the bank and the government, which enabled me to set up my own business. It was incredibly hard at the beginning. The art trade is very closed; people don’t like newcomers, so they mess you around, and you have to be able to take it. And I had zero experience. So I started off with two major mistakes. My first purchase was a Winter Landscape by Gerrit van Battem, which I bought for 30,000 guilders. When I took the painting to the conservator he gave me my first lesson in looking – unfortunately it turned out that the entire sky section had been painted with new, twentieth-century paint. I was eventually able to sell the painting, but I had to accept a loss.</p>
+      <p class="iv-q">So your credit went up in smoke.</p>
+      <p class="iv-a">Yes, and after that I made another, similar, mistake, with a Seascape by Pieter Mulier the Elder. That painting turned out to have been cut down. Today I’d see that straight away, from the traces of sawing and from the composition, but as I said, I was still learning how to look. Still, I did learn – by trial and error.</p>
+      <p class="iv-q">When did you have your breakthrough?</p>
+      <p class="iv-a">It was at the 1991 PAN art fair, where Salomon Stodel had given me wall space to hang my Old Masters, that I met Rob Noortman, who offered to help me. I had discovered a painting by Pieter Claesz, which Noortman and I purchased for 100,000 guilders and Noortman sold for over a million. So then I could get moving. We bought and sold several other paintings together, and then in 1992 I was given my own stand at the PAN, I met clients, went to TEFAF, and the business really took off. Art fairs obviously have tremendous added value, since they enable you to reach a wide international public in one fell swoop.</p>
+      <p class="iv-q">You mentioned the errors you made at the start of your career, about learning how to look. We hear it said more and more often, that university students don’t learn how to look.</p>
+      <p class="iv-a">It’s true. The practice of looking still receives little attention – let alone the idea that students would ever be allowed to touch a painting. How many hours does the average student spend at museums, art fairs, private art galleries, with real paintings? Who teaches them to look at artworks and draw their own conclusions? I found it exciting to see Fritz Koreny doing just that at CODART NEGENTIEN in Madrid. You may not always agree with his conclusions, but even so: it was a fantastic lesson in looking.</p>
+      <p class="iv-q">Perhaps art dealers like you should give guest lectures at universities. To keep young people connected to the Old Masters.</p>
+      <p class="iv-a">Well I’ve never thought about it, but it would be interesting, teaching students much more about the everyday practice of looking at artworks. I do that now, but in a different way: I hire young art historians and train them. What they bring the firm is an enormous amount of expertise, and what they learn here is how to look. Without someone like Jasper Hillegers, who has been working for me since 2010 and was recently also appointed curator at the Frans Hals Museum, we would never have been able to identify the subject in Pickenoy’s portrait. His academic approach opened my eyes. Collaboration with scholars is essential to the art trade – I consider it crucial to the significance of my work to ensure that we can provide that depth of knowledge about every painting.</p>
+      <figure class="iv-fig"><img src="images/codart-interview-pickenoy.jpg" alt="Nicolaes Eliasz. Pickenoy, Portrait of Dirck van Dans" loading="lazy"><figcaption>Nicolaes Eliasz. Pickenoy, <em>Portrait of Dirck van Dans</em></figcaption></figure>
+      <p class="iv-q">You belong to the younger generations of art dealers, but now a new generation is making its presence felt.</p>
+      <p class="iv-a">Yes, some interesting young people have appeared in the art trade who have a really good eye. Jan Six, whose firm is affiliated to Hazlitt, Gooden &amp; Fox in London, is based in Amsterdam, and so is Niels de Boer, of the art gallery P. de Boer. I hope that Sander Bijl will also come to Amsterdam. Now that older dealers in London, such as Johnny van Haeften, are retiring, and people like Richard Green are buying fewer Dutch Old Masters, there is plenty of momentum – and Brexit has reinforced this trend – to restore Amsterdam’s position as the center of trade in Old Masters. The reopening of the Rijksmuseum has also provided a tremendous impulse, attracting far more potential clients, including some from China. We’ve left the dark days behind us: a new era has dawned.</p>
+      <figure class="iv-fig"><img src="images/codart-interview-pickenoy-detail.jpg" alt="Detail of the Portrait of Dirck van Dans by Pickenoy" loading="lazy"><figcaption>Nicolaes Eliasz. Pickenoy, <em>Portrait of Dirck van Dans</em> (detail)</figcaption></figure>
+      <p class="iv-q">A new era – but all the art dealers are men!</p>
+      <p class="iv-a">Yes, I have no idea why women don’t venture into this field. You must have a good eye, be able to make purchases, but you also have to have good business sense, to have a good grasp of all the fiscal and accounting aspects of your company. We’ve certainly seen a whole new generation of women curators establish themselves, so it’s a mystery to me why we don’t see them in the art trade. Perhaps it really is a question of daring?</p>
+      <p class="iv-q">Have you noticed any other new trends?</p>
+      <p class="iv-a">Yes, in two areas. First of all, there’s a new generation of younger collectors, particularly in the US. Last year I sold a painting for the first time to collectors who usually only buy modern art. Old Masters are cheap in comparison to modern and contemporary art, and you see bankers and hedge fund managers getting interested in investing in Old Masters. There are also a lot of potential clients in Asian countries: people who see that Old Masters are cheap now and that the prices will rise. When the Leiden Gallery starts putting on exhibitions in the Far East, as Tom Kaplan plans to do, when people over there see that you can buy ten Rembrandts in the space of ten years – that will change the market.</p>
+      <p class="iv-q">What about content?</p>
+      <p class="iv-a">For a dealer it’s important to find artworks that fit the Zeitgeist. Why is contemporary art all the rage right now? Because it hits you – wham! – really directly. Cabinet paintings demand a completely different approach to looking: you have to go right into the painting, as it were: you have to make an effort, and it requires more knowledge, which people often don’t have nowadays. Still, paintings by Old Masters that make a gesture, that reach out to you in a sense, much as contemporary artworks do – works like that are starting to stir up more interest among collectors, including new ones. People want paintings that have an immediate impact. As a dealer you have to dare to acknowledge that and go in search of paintings like that. The Duyster is an example of that, and so is The Owl by Dirk Valkenburg, which I presented at the TEFAF in March.</p>
+      <figure class="iv-fig"><img src="images/codart-interview-valkenburg-owl.jpg" alt="Dirk Valkenburg, The Owl" loading="lazy"><figcaption>Dirk Valkenburg, <em>The Owl</em></figcaption></figure>
+      <p class="iv-q">How do you see the curator’s role here?</p>
+      <p class="iv-a">A good example was the exhibition The Discovery of Everyday Life: From Bosch to Bruegel at Museum Boijmans Van Beuningen last year. Every painting there looked really contemporary: they were all striking images. The exhibition was framed by a good narrative and it was accompanied by an excellent, in-depth catalogue. In my view, that belongs to the core tasks of today’s curator. Curators must try to get the public engaged in that knowledge by telling an interesting story.</p>
+      <p class="iv-q">“The beautiful is secret” was the title of Peter Hecht’s valedictory lecture. That may be so, but that does not absolve us art historians of the duty of setting out to illuminate artworks. Can you illuminate the most beautiful paintings here on Spiegelgracht? Or is the essence of their beauty, for you too, a secret?</p>
+      <p class="iv-a">I can articulate what it is that makes a painting “beautiful” in my eyes. A painting must be sexy, must appeal to the senses. That may come from its chiaroscuro or from a loose, vigorous style of painting – it has to have a certain tension that is difficult to put into words. Take the first painting you touched this morning: those buttons, that material, and the sky, they all add real excitement to the painting. Or this Portrait of Dirck van Dans by Pickenoy: he meets our gaze with such self-assurance. Marvelous! But to my mind, this Lievens, Saint Simeon and the Christ Child, is another example. Lievens signed the painting with his Latin name, “J. Livius,” so he was really proud of it. It is actually more suited to a museum than the art trade, with that strange rather unattractive Christ Child and Simeon’s bad teeth. But it has precisely that tension I was talking about, and someday I’ll find a good home for it.</p>
+      <figure class="iv-fig"><img src="images/codart-interview-lievens-simeon.jpg" alt="Jan Lievens, Saint Simeon and the Christ Child" loading="lazy"><figcaption>Jan Lievens, <em>Saint Simeon and the Christ Child</em></figcaption></figure>
+    <p class="iv-credit">This interview was originally published in the CODART eZine, no. 8, Autumn 2016, and is reproduced here with the kind permission of CODART. <a href="https://www.codart.nl/feature/friends/salomon-lilian-interviewed-by-gerdien-verschoor/" target="_blank" rel="noopener">Read it on the CODART website →</a></p>
+  </div>
+</dialog>
+
 <!-- LOCATIONS -->
 <div class="locations-wrap" id="contact">
   <div class="locations-inner">
@@ -1060,6 +1216,18 @@
     window.location.href = 'mailto:salomonlilianoldmasters@gmail.com?subject=' + encodeURIComponent('Consultation request – ' + f.subject.value) +
       '&body=' + encodeURIComponent(body);
   });
+})();
+</script>
+<script>
+(function () {
+  var d = document.getElementById('press-dialog');
+  if (!d) return;
+  document.getElementById('press-open').addEventListener('click', function () {
+    document.body.classList.add('entry-open'); d.showModal(); d.querySelector('.press-dialog-body').scrollTop = 0;
+  });
+  d.querySelector('.entry-close').addEventListener('click', function () { d.close(); });
+  d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+  d.addEventListener('close', function () { document.body.classList.remove('entry-open'); });
 })();
 </script>
 </body>
