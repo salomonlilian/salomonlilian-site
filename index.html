@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salomon Lilian · Dutch Old Master Paintings</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink:   #0A0907;
+    --ivory: #EDE6D6;
+    --gold:  #B8975A;
+    --stone: #4A4035;
+    --mist:  #7A6E60;
+    --panel: #130F0A;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--ink);
+    color: var(--ivory);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 48px;
+    background: linear-gradient(to bottom, rgba(10,9,7,0.96) 0%, transparent 100%);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garant', serif;
+    font-weight: 300; font-size: 15px;
+    letter-spacing: 4px; text-transform: uppercase;
+    color: var(--ivory); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    font-size: 11px; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--mist);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--ivory); }
+
+  /* HERO */
+  .hero { display: grid; grid-template-columns: 42% 1fr; min-height: 100vh; }
+
+  .hero-panel { position: relative; overflow: hidden; }
+  .hero-painting {
+    position: absolute; inset: 0;
+    background-image: url('images/hero-rubens-hercules.jpg');
+    background-size: cover;
+    background-position: center 30%;
+  }
+  .hero-panel-glow {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 58%, rgba(184,151,90,0.14) 0%, transparent 60%),
+      linear-gradient(to top, rgba(10,9,7,0.92) 0%, rgba(10,9,7,0.35) 45%, rgba(10,9,7,0.05) 70%);
+    z-index: 1;
+  }
+  .hero-panel-inner {
+    position: relative; z-index: 2;
+    height: 100%; display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 56px 44px;
+  }
+  .hero-panel-label {
+    font-size: 10px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 14px; opacity: 0.8;
+  }
+  .hero-panel-line { width: 32px; height: 1px; background: var(--gold); margin-bottom: 20px; opacity: 0.6; }
+  .hero-panel-title {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 22px; font-weight: 300; font-style: italic;
+    color: var(--ivory); line-height: 1.5; margin-bottom: 10px;
+  }
+  .hero-panel-caption { font-size: 11px; color: var(--mist); line-height: 1.7; }
+
+  .hero-content {
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 120px 80px 80px 72px;
+  }
+  .hero-eyebrow {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 32px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 28px; height: 1px;
+    background: var(--gold); opacity: 0.5;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garant', serif;
+    font-size: clamp(48px, 5vw, 72px);
+    font-weight: 300; line-height: 1.08;
+    color: var(--ivory); margin-bottom: 8px;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-subtitle {
+    font-family: 'Cormorant Garant', serif;
+    font-size: clamp(18px, 2vw, 28px);
+    font-weight: 300; font-style: italic;
+    color: var(--mist); margin-bottom: 36px;
+  }
+  .hero-desc {
+    font-size: 13px; color: var(--mist);
+    line-height: 1.9; max-width: 400px; margin-bottom: 48px;
+  }
+  .hero-ctas { display: flex; gap: 24px; align-items: center; }
+  .btn-primary {
+    display: inline-block; padding: 14px 36px;
+    border: 1px solid var(--gold); color: var(--gold);
+    font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+    text-decoration: none; background: transparent;
+    transition: all 0.3s; font-family: 'Inter', sans-serif; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--gold); color: var(--ink); }
+  .btn-ghost {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--mist); text-decoration: none; cursor: pointer;
+    transition: color 0.3s; background: none; border: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-ghost:hover { color: var(--ivory); }
+  .hero-stats {
+    margin-top: 60px; display: flex; gap: 48px;
+    padding-top: 36px; border-top: 1px solid rgba(74,64,53,0.4);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 34px; font-weight: 300;
+    color: var(--ivory); line-height: 1; margin-bottom: 6px;
+  }
+  .stat-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--mist); }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%; height: 1px;
+    background: linear-gradient(to right, transparent, var(--stone), transparent);
+  }
+
+  /* SECTIONS */
+  .section { padding: 96px 80px; max-width: 1200px; margin: 0 auto; }
+  .section-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 52px; }
+  .section-num {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 13px; color: var(--gold); letter-spacing: 2px; opacity: 0.7;
+  }
+  .section-title { font-family: 'Cormorant Garant', serif; font-size: 38px; font-weight: 300; color: var(--ivory); }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--stone); border: 1px solid var(--stone);
+  }
+  .service-card { background: var(--panel); padding: 40px 36px; transition: background 0.3s; }
+  .service-card:hover { background: #1c1510; }
+  .service-icon {
+    width: 32px; height: 1px; background: var(--gold);
+    margin-bottom: 22px; opacity: 0.7;
+  }
+  .service-name {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 20px; font-weight: 400; color: var(--ivory); margin-bottom: 12px;
+  }
+  .service-desc { font-size: 12px; color: var(--mist); line-height: 1.8; }
+
+  /* COLLECTION */
+  .collection-grid {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 56px 40px;
+  }
+  .collection-grid > .painting-card { width: calc((100% - 80px) / 3); }
+  @media (max-width: 820px) {
+    .collection-grid > .painting-card { width: calc((100% - 40px) / 2); }
+  }
+  @media (max-width: 520px) {
+    .collection-grid > .painting-card { width: 100%; }
+  }
+  .painting-card { cursor: default; }
+  .painting-frame {
+    position: relative; width: 100%; aspect-ratio: 4 / 5;
+    overflow: hidden; background: var(--panel);
+    border: 1px solid var(--stone);
+  }
+  .painting-frame img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block; filter: saturate(0.96);
+    transition: transform 0.6s ease;
+  }
+  .painting-card:hover .painting-frame img { transform: scale(1.04); }
+  .painting-info { padding: 22px 2px 0; }
+  .painting-title {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 20px; font-weight: 400; font-style: italic;
+    color: var(--ivory); margin-bottom: 6px;
+  }
+  .painting-artist { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .painting-meta { font-size: 11px; color: var(--mist); line-height: 1.7; }
+
+  /* Featured landscape painting: full width, image left, text right */
+  .collection-grid > .painting-card.featured {
+    width: 100%; margin-top: 24px;
+    display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: center;
+  }
+  .painting-card.featured .painting-frame { aspect-ratio: auto; border: none; background: none; }
+  .painting-card.featured .painting-frame img { height: auto; object-fit: contain; }
+  .painting-card.featured .painting-info { padding: 0; }
+  .painting-card.featured .painting-title { font-size: 26px; }
+  .painting-card.featured .painting-label {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 18px; display: block;
+  }
+  @media (max-width: 820px) {
+    .collection-grid > .painting-card.featured { grid-template-columns: 1fr; gap: 22px; }
+  }
+
+
+  /* CATALOGUE ENTRY DIALOG */
+  .painting-card.has-entry { cursor: pointer; }
+  .painting-card.has-entry:focus-visible { outline: 1px solid var(--gold); outline-offset: 8px; }
+  .painting-more {
+    display: inline-block; margin-top: 12px; font-size: 10px; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold); opacity: 0.75; transition: opacity 0.3s;
+  }
+  .painting-card.has-entry:hover .painting-more { opacity: 1; }
+  .entry-dialog {
+    width: min(1180px, calc(100vw - 32px)); max-height: calc(100vh - 32px);
+    margin: auto; padding: 0; border: 1px solid var(--stone);
+    background: var(--ink); color: var(--ivory); overflow: hidden;
+  }
+  .entry-dialog::backdrop { background: rgba(5,4,3,0.86); backdrop-filter: blur(2px); }
+  .entry-dialog[open] { display: grid; grid-template-columns: 1fr 1fr; }
+  .entry-media {
+    background: var(--panel); display: flex; align-items: center; justify-content: center;
+    padding: 48px; max-height: calc(100vh - 34px);
+  }
+  .entry-media img { max-width: 100%; max-height: calc(100vh - 130px); object-fit: contain; display: block; }
+  .entry-text { padding: 56px 56px 48px; overflow-y: auto; max-height: calc(100vh - 34px); }
+  .entry-close {
+    position: absolute; top: 14px; right: 18px; z-index: 2; background: none; border: none;
+    color: var(--ivory); font-size: 26px; line-height: 1; cursor: pointer;
+    width: 40px; height: 40px; border-radius: 50%; background: rgba(10,9,7,0.72);
+  }
+  .entry-close:hover { color: var(--ivory); }
+  .entry-artist { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); }
+  .entry-life { font-size: 11px; color: var(--mist); margin-top: 6px; }
+  .entry-title {
+    font-family: 'Cormorant Garant', serif; font-style: italic; font-weight: 400;
+    font-size: 32px; line-height: 1.2; margin: 22px 0 18px;
+  }
+  .entry-details { font-size: 12px; color: var(--mist); line-height: 1.8; }
+  .entry-rule { width: 40px; height: 1px; background: var(--gold); margin: 32px 0; opacity: 0.6; }
+  .entry-block { margin-bottom: 28px; }
+  .entry-block h3, .entry-essay h3 {
+    font-family: 'Inter', sans-serif; font-weight: 400; font-size: 10px; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+  }
+  .entry-block ul { list-style: none; }
+  .entry-block li { font-size: 12px; color: var(--ivory); opacity: 0.82; line-height: 1.7; margin-bottom: 8px; }
+  .entry-essay p { font-size: 13px; line-height: 1.95; color: var(--ivory); opacity: 0.88; margin-bottom: 16px; }
+  .entry-pdf {
+    display: inline-block; margin-top: 18px; padding: 14px 22px; border: 1px solid var(--gold);
+    color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+    transition: background 0.3s, color 0.3s;
+  }
+  .entry-pdf:hover { background: var(--gold); color: var(--ink); }
+  body.entry-open { overflow: hidden; }
+  @media (max-width: 820px) {
+    .entry-dialog[open] { grid-template-columns: 1fr; overflow-y: auto; }
+    .entry-media { padding: 24px; max-height: none; }
+    .entry-media img { max-height: 60vh; }
+    .entry-text { padding: 32px 22px 36px; max-height: none; overflow: visible; }
+    .entry-title { font-size: 26px; }
+    .entry-close { position: fixed; top: 26px; right: 26px; }
+  }
+
+
+  /* RESEARCH & DISCOVERIES */
+  .discoveries { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 36px; margin-top: 48px; }
+  .discovery {
+    all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column;
+    border-top: 1px solid var(--stone); padding-top: 22px;
+  }
+  .discovery:focus-visible { outline: 1px solid var(--gold); outline-offset: 6px; }
+  .discovery-thumb { display: block; aspect-ratio: 4 / 5; overflow: hidden; margin-bottom: 18px; background: var(--ink); }
+  .discovery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+  .discovery:hover .discovery-thumb img { transform: scale(1.04); }
+  .discovery-kicker { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .discovery-title { font-family: 'Cormorant Garant', serif; font-style: italic; font-size: 22px; color: var(--ivory); margin-bottom: 10px; }
+  .discovery-text { font-size: 12px; line-height: 1.8; color: var(--mist); flex: 1; }
+  .discovery-more { margin-top: 14px; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); opacity: 0.75; }
+  .discovery:hover .discovery-more { opacity: 1; }
+  .discovery-thumb { position: relative; }
+  .discovery-tag {
+    position: absolute; left: 12px; top: 12px; padding: 6px 10px;
+    background: rgba(14, 12, 10, 0.82); color: var(--gold);
+    font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase;
+  }
+  .loan-notice {
+    margin-top: 56px; padding: 22px 0 0; border-top: 1px solid var(--stone);
+    font-size: 13px; line-height: 1.9; color: var(--mist); max-width: 760px;
+  }
+  .loan-notice em { color: var(--ivory); }
+  .loan-label {
+    display: block; margin-bottom: 6px; font-size: 10px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .loan-notice a {
+    color: var(--gold); text-decoration: none; margin-left: 6px; white-space: nowrap;
+    font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+  }
+  .loan-notice a:hover { text-decoration: underline; }
+  @media (max-width: 960px) { .discoveries { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .discoveries { grid-template-columns: 1fr; } }
+
+  /* PROVENANCE & RESEARCH */
+  .research-wrap { background: var(--panel); padding: 80px; }
+  .research-inner { max-width: 1200px; margin: 0 auto; }
+  .research-entry { border-top: 1px solid var(--stone); padding-top: 48px; margin-top: 48px; }
+  .research-entry:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .research-heading {
+    font-family: 'Cormorant Garant', serif; font-size: 28px; font-weight: 400;
+    font-style: italic; color: var(--ivory); margin-bottom: 4px;
+  }
+  .research-artist { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+  .research-intro { font-size: 13px; color: var(--mist); line-height: 1.9; max-width: 760px; margin-bottom: 32px; }
+  .research-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .research-label {
+    font-family: 'Cormorant Garant', serif; font-size: 15px; font-style: italic;
+    color: var(--gold); margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid rgba(184,151,90,0.3);
+  }
+  .research-columns ul { list-style: none; }
+  .research-columns li {
+    font-size: 11.5px; color: var(--mist); line-height: 1.8;
+    margin-bottom: 12px; padding-left: 14px; position: relative;
+  }
+  .research-columns li::before {
+    content: '—'; position: absolute; left: 0; color: var(--stone);
+  }
+  .research-columns li em { font-style: italic; color: var(--ivory); }
+
+  .research-toggle-link {
+    margin-top: 36px; display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold);
+    border: 1px solid var(--gold); padding: 13px 30px; transition: all 0.3s;
+    text-decoration: none; cursor: pointer; font-family: 'Inter', sans-serif;
+  }
+  .research-toggle-link .arrow { font-size: 13px; }
+  .research-toggle-link:hover { background: var(--gold); color: var(--ink); }
+
+  .research-full { max-width: 820px; }
+  .research-full h4 {
+    font-family: 'Cormorant Garant', serif; font-size: 19px; font-style: italic;
+    font-weight: 400; color: var(--ivory); margin: 32px 0 14px;
+  }
+  .research-full h4:first-child { margin-top: 0; }
+  .research-full p {
+    font-size: 13px; color: var(--mist); line-height: 1.95; margin-bottom: 16px;
+    text-align: justify;
+  }
+  .research-full .research-figs { font-size: 11px; color: var(--stone); font-style: italic; margin-bottom: 16px; }
+  .research-notes {
+    margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--stone);
+    font-size: 10.5px; color: var(--stone); line-height: 1.8; columns: 2; column-gap: 40px;
+  }
+  .research-notes li { margin-bottom: 10px; break-inside: avoid; }
+
+  .research-doc { max-width: 900px; margin: 0 auto; }
+  .research-doc img {
+    width: 100%; display: block; margin-bottom: 18px;
+    border: 1px solid var(--stone); background: #fff;
+  }
+
+  /* LOCATIONS */
+  .locations-wrap { padding: 80px; background: var(--panel); }
+  .locations-inner { max-width: 1200px; margin: 0 auto; }
+  .locations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--stone); margin-top: 48px; }
+  .location-card { background: var(--ink); padding: 52px 56px; }
+  .location-city {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 44px; font-weight: 300; font-style: italic;
+    color: var(--ivory); margin-bottom: 6px;
+  }
+  .location-country { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+  .location-addr { font-size: 13px; color: var(--mist); line-height: 2.1; }
+  .location-note { margin-top: 24px; font-size: 11px; color: var(--stone); letter-spacing: 1.5px; text-transform: uppercase; }
+
+  /* FAIRS */
+  .fairs-row { display: flex; gap: 32px; margin-top: 48px; flex-wrap: wrap; }
+  .fair-chip { display: flex; align-items: center; gap: 14px; padding: 18px 28px; border: 1px solid var(--stone); }
+  .fair-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+  .fair-name { font-family: 'Cormorant Garant', serif; font-size: 18px; color: var(--ivory); font-style: italic; }
+  .fair-loc { font-size: 10px; color: var(--mist); letter-spacing: 2px; text-transform: uppercase; margin-top: 3px; }
+  a.fair-chip { text-decoration: none; color: inherit; transition: border-color 0.3s ease; }
+  a.fair-chip:hover { border-color: var(--gold); }
+  a.fair-chip:hover .fair-name { color: var(--gold); }
+  .fair-arrow { margin-left: 10px; color: var(--gold); font-size: 14px; }
+
+
+  /* FILM & INSTAGRAM */
+  .visit { display: grid; grid-template-columns: 3fr 2fr; gap: 56px; align-items: center; margin-top: 64px; }
+  .visit-film { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ink); border: 1px solid var(--stone); }
+  .visit-film img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease, opacity 0.6s ease; opacity: 0.88; }
+  .visit-film:hover img { transform: scale(1.03); opacity: 1; }
+  .visit-play {
+    position: absolute; left: 50%; top: 50%; width: 68px; height: 68px; margin: -34px 0 0 -34px;
+    border-radius: 50%; border: 1px solid var(--gold); background: rgba(10, 9, 7, 0.72);
+    display: flex; align-items: center; justify-content: center; color: var(--gold); padding-left: 3px;
+    transition: background 0.3s ease;
+  }
+  .visit-film:hover .visit-play { background: rgba(10, 9, 7, 0.9); }
+  .visit-kicker { display: block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .visit-title { font-family: 'Cormorant Garant', serif; font-style: italic; font-size: 30px; color: var(--ivory); margin-bottom: 14px; }
+  .visit-text p { font-size: 13px; line-height: 1.9; color: var(--mist); margin-bottom: 22px; }
+  .visit-link {
+    display: flex; align-items: center; gap: 10px; width: fit-content; margin-top: 12px;
+    color: var(--gold); text-decoration: none; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+  }
+  .visit-link:hover { text-decoration: underline; }
+  .contact-line {
+    display: flex; align-items: baseline; justify-content: center; gap: 20px; flex-wrap: wrap;
+    margin-top: 1px; padding: 28px 24px; background: var(--ink);
+  }
+  .contact-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+  .contact-line a {
+    font-family: 'Cormorant Garant', serif; font-size: 26px; font-weight: 300;
+    color: var(--ivory); text-decoration: none; letter-spacing: 1px;
+  }
+  .contact-line a:hover { color: var(--gold); }
+  .footer-ig { color: var(--mist); display: flex; transition: color 0.3s ease; }
+  .footer-ig:hover { color: var(--gold); }
+  @media (max-width: 820px) { .visit { grid-template-columns: 1fr; gap: 28px; } }
+
+
+  /* CONSULTATION */
+  .consult-dialog {
+    width: min(720px, calc(100vw - 32px)); max-height: calc(100vh - 32px); overflow-y: auto;
+    margin: auto; padding: 0; border: 1px solid var(--stone); background: var(--ink); color: var(--ivory);
+  }
+  .consult-dialog::backdrop { background: rgba(5,4,3,0.86); backdrop-filter: blur(2px); }
+  .consult-close {
+    position: absolute; top: 14px; right: 18px; width: 40px; height: 40px; border-radius: 50%;
+    border: none; background: rgba(10,9,7,0.72); color: var(--ivory); font-size: 26px; line-height: 1; cursor: pointer;
+  }
+  .consult-form { padding: 52px 56px 44px; display: flex; flex-direction: column; gap: 20px; }
+  .consult-kicker { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+  .consult-title { font-family: 'Cormorant Garant', serif; font-weight: 300; font-size: 38px; margin-top: -8px; }
+  .consult-title em { font-style: italic; color: var(--gold); }
+  .consult-intro { font-size: 13px; line-height: 1.9; color: var(--mist); }
+  .consult-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .consult-form label { display: flex; flex-direction: column; gap: 8px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--mist); }
+  .consult-form .opt { text-transform: none; letter-spacing: 0; }
+  .consult-form input[type=text], .consult-form input[type=email], .consult-form input[type=tel],
+  .consult-form select, .consult-form textarea {
+    font: 14px 'Inter', sans-serif; color: var(--ivory); background: transparent;
+    border: none; border-bottom: 1px solid var(--stone); padding: 8px 0; outline: none; border-radius: 0;
+  }
+  .consult-form select option { background: var(--ink); }
+  .consult-form textarea { border: 1px solid var(--stone); padding: 10px 12px; resize: vertical; }
+  .consult-form input:focus, .consult-form select:focus, .consult-form textarea:focus { border-color: var(--gold); }
+  .consult-radios { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+  .consult-radios label { flex-direction: row; align-items: center; gap: 8px; font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--ivory); cursor: pointer; }
+  .consult-radios input { accent-color: var(--gold); }
+  .consult-error { font-size: 12px; color: #d9a36a; }
+  .consult-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 6px; }
+  .consult-note { font-size: 11px; color: var(--mist); line-height: 1.7; flex: 1; min-width: 220px; }
+  .consult-note a, .consult-phones a { color: var(--gold); text-decoration: none; }
+  .consult-privacy { font-size: 10.5px; color: var(--mist); line-height: 1.7; opacity: 0.85; margin: 0; }
+  .consult-privacy a { color: var(--gold); text-decoration: none; }
+  .consult-phones { display: flex; flex-wrap: wrap; gap: 8px 24px; padding-top: 18px; border-top: 1px solid var(--stone); font-size: 12px; color: var(--mist); }
+  .consult-phones span { width: 100%; font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; }
+  @media (max-width: 620px) {
+    .consult-form { padding: 56px 24px 32px; }
+    .consult-row { grid-template-columns: 1fr; }
+    .consult-title { font-size: 32px; }
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 44px 80px; border-top: 1px solid var(--stone);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-logo { font-family: 'Cormorant Garant', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--mist); }
+  .footer-copy { font-size: 11px; color: var(--stone); letter-spacing: 1px; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * { animation: fadeUp 0.9s ease both; }
+  .hero-eyebrow  { animation-delay: 0.10s; }
+  .hero-title    { animation-delay: 0.26s; }
+  .hero-subtitle { animation-delay: 0.38s; }
+  .hero-desc     { animation-delay: 0.48s; }
+  .hero-ctas     { animation-delay: 0.58s; }
+  .hero-stats    { animation-delay: 0.72s; }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  /* SMALL SCREENS */
+  html { scroll-padding-top: 80px; }
+  @media (max-width: 820px) {
+    nav { padding: 18px 20px; flex-direction: column; gap: 10px; }
+    .nav-links { gap: 18px; }
+    .nav-links a { font-size: 9px; letter-spacing: 2px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-panel { min-height: 72vh; }
+    .hero-content { padding: 56px 24px 64px; }
+    .hero-ctas { flex-wrap: wrap; }
+    .hero-stats { gap: 28px; flex-wrap: wrap; }
+    .section { padding: 72px 24px; }
+    .research-wrap, .locations-wrap { padding: 72px 24px; }
+    .locations-grid, .services-grid { grid-template-columns: 1fr; }
+    .service-card { padding: 32px 28px; }
+    .location-card { padding: 36px 28px; }
+    .location-city { font-size: 36px; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 18px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Salomon Lilian</a>
+  <ul class="nav-links">
+    <li><a href="#collection">Collection</a></li>
+    <li><a href="#research">Expertise</a></li>
+    <li><a href="#fairs">Fairs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-panel">
+    <div class="hero-painting"></div>
+    <div class="hero-panel-glow"></div>
+    <div class="hero-panel-inner">
+      <div class="hero-panel-label">Recent acquisition</div>
+      <div class="hero-panel-line"></div>
+      <div class="hero-panel-title">Hercules as a Gladiator</div>
+      <div class="hero-panel-caption">
+        Peter Paul Rubens<br>
+        Oil on panel · 65.5 × 54.4 cm<br>
+        Amsterdam Research Centre
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Est. 1989 · Amsterdam &amp; Geneva</div>
+    <h1 class="hero-title">Dutch &amp; Flemish<br><em>Old Masters</em></h1>
+    <p class="hero-subtitle">Connoisseurship since 1989</p>
+    <p class="hero-desc">
+      One of the world's leading specialists in 16th- and 17th-century Dutch and Flemish paintings. Select acquisitions, scholarly expertise, and curatorial counsel for private collectors and institutions.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#collection">View Collection</a>
+      <button class="btn-ghost" type="button" data-consult>Request a consultation →</button>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">35+</div>
+        <div class="stat-label">Years of expertise</div>
+      </div>
+      <div>
+        <div class="stat-num">TEFAF</div>
+        <div class="stat-label">Annual exhibitor</div>
+      </div>
+      <div>
+        <div class="stat-num">Rijks.</div>
+        <div class="stat-label">Museum clients</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<div style="background: var(--ink);">
+  <div class="section">
+    <div class="section-header reveal">
+      <h2 class="section-title">What we <em>offer</em></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal"><div class="service-icon" aria-hidden="true"></div><div class="service-name">Select Paintings</div><div class="service-desc">A curated inventory of rigorously attributed works, each supported by full provenance documentation and scholarly literature.</div></div>
+      <div class="service-card reveal"><div class="service-icon" aria-hidden="true"></div><div class="service-name">Expert Evaluations</div><div class="service-desc">Authentication, condition assessment, and market valuation by one of the foremost international experts in the field.</div></div>
+      <div class="service-card reveal"><div class="service-icon" aria-hidden="true"></div><div class="service-name">Collection Counsel</div><div class="service-desc">Strategic guidance on building, maintaining, and cataloguing a collection — from acquisition through to institutional loan.</div></div>
+      <div class="service-card reveal"><div class="service-icon" aria-hidden="true"></div><div class="service-name">Research &amp; Attribution</div><div class="service-desc">In-depth archival and art-historical research through our Amsterdam centre, with contributions published in annual catalogues.</div></div>
+      <div class="service-card reveal"><div class="service-icon" aria-hidden="true"></div><div class="service-name">Conservation &amp; Framing</div><div class="service-desc">Coordination of conservation, restoration, period framing, photography, and specialist shipping worldwide.</div></div>
+      <div class="service-card reveal"><div class="service-icon" aria-hidden="true"></div><div class="service-name">Annual Catalogue</div><div class="service-desc">Each year, a scholarly publication with contributions by leading art historians — the record of our most significant acquisitions.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COLLECTION -->
+<div id="collection" style="background: var(--ink);">
+  <div class="section">
+    <div class="section-header reveal">
+      <h2 class="section-title">The <em>collection</em></h2>
+    </div>
+    <div class="collection-grid">
+      <div class="painting-card reveal has-entry" data-entry="rubens-hercules" tabindex="0" role="button" aria-label="View catalogue entry: Hercules as a Gladiator">
+        <div class="painting-frame">
+          <img src="images/hercules-peter-paul-rubens.jpg" alt="Hercules, Peter Paul Rubens">
+        </div>
+        <div class="painting-info">
+          <div class="painting-title">Hercules as a Gladiator</div>
+          <div class="painting-artist">Peter Paul Rubens</div>
+          <div class="painting-meta">Oil on panel · 65.5 × 54.4 cm</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="painting-card reveal has-entry" data-entry="lievens" tabindex="0" role="button" aria-label="View catalogue entry: A Tronie of a Bearded Old Man in Profile, Facing Left">
+        <div class="painting-frame">
+          <img src="images/a-tronie-of-a-bearded-old-man-in-profile-facing-left-jan-lievens.jpg" alt="A Tronie of a Bearded Old Man in Profile, Facing Left, Jan Lievens">
+        </div>
+        <div class="painting-info">
+          <div class="painting-title">A Tronie of a Bearded Old Man in Profile, Facing Left</div>
+          <div class="painting-artist">Jan Lievens</div>
+          <div class="painting-meta">Oil on panel · 56.3 × 45.8 cm</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="painting-card reveal has-entry" data-entry="sweerts-turban" tabindex="0" role="button" aria-label="View catalogue entry: A Young Man Wearing a Turban Holding an Upturned Glass: The Fingernail Test (Allegory of Taste)">
+        <div class="painting-frame">
+          <img src="images/a-young-man-wearing-a-turban-holding-an-upturned-glass-the-fingernail-test-alleg.jpg" alt="A Young Man Wearing a Turban Holding an Upturned Glass: The Fingernail Test (Allegory of Taste), Michael Sweerts">
+        </div>
+        <div class="painting-info">
+          <div class="painting-title">A Young Man Wearing a Turban Holding an Upturned Glass: The Fingernail Test (Allegory of Taste)</div>
+          <div class="painting-artist">Michael Sweerts</div>
+          <div class="painting-meta">Oil on canvas · 75 × 58.4 cm</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="painting-card reveal has-entry" data-entry="verelst" tabindex="0" role="button" aria-label="View catalogue entry: Self Portrait with a Black Beret">
+        <div class="painting-frame">
+          <img src="images/self-portrait-with-a-black-beret-pieter-verelst.jpg" alt="Self Portrait with a Black Beret, Pieter Verelst" loading="lazy">
+        </div>
+        <div class="painting-info">
+          <div class="painting-title">Self Portrait with a Black Beret</div>
+          <div class="painting-artist">Pieter Verelst</div>
+          <div class="painting-meta">Oil on panel · 25 × 20.8 cm</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="painting-card reveal has-entry" data-entry="swabian-red-hat" tabindex="0" role="button" aria-label="View catalogue entry: Portrait of a Man with a Red Hat, possibly Eitel Friedrich II von Hohenzollern (1452-1512)">
+        <div class="painting-frame">
+          <img src="images/portrait-of-a-man-with-a-red-hat-possibly-eitel-friedrich-ii-von-hohenzollern-14.jpg" alt="Portrait of a Man with a Red Hat, possibly Eitel Friedrich II von Hohenzollern (1452-1512), Swabian School">
+        </div>
+        <div class="painting-info">
+          <div class="painting-title">Portrait of a Man with a Red Hat, possibly Eitel Friedrich II von Hohenzollern (1452-1512)</div>
+          <div class="painting-artist">Swabian School, c. 1480</div>
+          <div class="painting-meta">Oil on panel · 52.5 × 35.5 cm</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="painting-card reveal has-entry" data-entry="backer" tabindex="0" role="button" aria-label="View catalogue entry: Tronie of a Bearded Man with a Large Beret">
+        <div class="painting-frame">
+          <img src="images/tronie-of-a-bearded-man-with-a-large-beret-jacob-backer.jpg" alt="Tronie of a Bearded Man with a Large Beret, Jacob Backer" loading="lazy">
+        </div>
+        <div class="painting-info">
+          <div class="painting-title">Tronie of a Bearded Man with a Large Beret</div>
+          <div class="painting-artist">Jacob Backer</div>
+          <div class="painting-meta">Oil on panel · 66 × 51 cm<br>Signed lower right: JAB (in ligature)</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="painting-card featured reveal has-entry" data-entry="sweerts-backgammon" tabindex="0" role="button" aria-label="View catalogue entry: Backgammon Players in an Interior">
+        <div class="painting-frame">
+          <img src="images/backgammon-players-in-an-interior-michael-sweerts.jpg" alt="Backgammon Players in an Interior, Michael Sweerts" loading="lazy">
+        </div>
+        <div class="painting-info">
+          <span class="painting-label">Recent acquisition</span>
+          <div class="painting-title">Backgammon Players in an Interior</div>
+          <div class="painting-artist">Michael Sweerts</div>
+          <div class="painting-meta">Oil on canvas · 75 × 102 cm<br>Signed lower centre: MS</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="painting-card reveal has-entry" data-entry="rubens-rosary" tabindex="0" role="button" aria-label="View catalogue entry: The Virgin and Child of the Rosary">
+        <div class="painting-frame">
+          <img src="images/the-virgin-and-child-of-the-rosary-peter-paul-rubens.jpg" alt="The Virgin and Child of the Rosary, Peter Paul Rubens">
+        </div>
+        <div class="painting-info">
+          <div class="painting-title">The Virgin and Child of the Rosary</div>
+          <div class="painting-artist">Peter Paul Rubens</div>
+          <div class="painting-meta">Oil on panel · 42.8 × 34.3 cm</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="painting-card reveal has-entry" data-entry="marrel" tabindex="0" role="button" aria-label="View catalogue entry: A Tulip Mania Painting">
+        <div class="painting-frame">
+          <img src="images/a-tulip-mania-painting-jacob-marrel.jpg" alt="A Tulip Mania Painting, Jacob Marrel" loading="lazy">
+        </div>
+        <div class="painting-info">
+          <div class="painting-title">A Tulip Mania Painting</div>
+          <div class="painting-artist">Jacob Marrel</div>
+          <div class="painting-meta">Oil on panel · 65 × 42 cm<br>Signed and dated lower centre: I . MARRELLUS . f / 1 . 6 . 35 .</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="painting-card reveal has-entry" data-entry="rottenhammer" tabindex="0" role="button" aria-label="View catalogue entry: The Adoration of the Christ Child with Angels Carrying the Arma Christi">
+        <div class="painting-frame">
+          <img src="images/the-adoration-of-the-christ-child-with-angels-carrying-the-arma-christi-hans-rot.jpg" alt="The Adoration of the Christ Child with Angels Carrying the Arma Christi, Hans Rottenhammer" loading="lazy">
+        </div>
+        <div class="painting-info">
+          <div class="painting-title">The Adoration of the Christ Child with Angels Carrying the Arma Christi</div>
+          <div class="painting-artist">Hans Rottenhammer</div>
+          <div class="painting-meta">Oil on copper · 26.5 × 21 cm<br>Signed lower right: Gio. / Rottenhamer / Venetia 1601</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="painting-card featured reveal has-entry" data-entry="claesz" tabindex="0" role="button" aria-label="View catalogue entry: Still Life with a Bread Roll, a Roemer and a Lying Berkemeyer, a Plate of Olives, a Knife, Oysters with Pepper and Salt on a Pewter Dish atop a Table">
+        <div class="painting-frame">
+          <img src="images/still-life-with-a-bread-roll-a-roemer-and-oysters-pieter-claesz.jpg" alt="Still Life with a Bread Roll, a Roemer and Oysters, Pieter Claesz" loading="lazy">
+        </div>
+        <div class="painting-info">
+          <div class="painting-title">Still Life with a Bread Roll, a Roemer and a Lying Berkemeyer, a Plate of Olives, a Knife, Oysters with Pepper and Salt on a Pewter Dish atop a Table</div>
+          <div class="painting-artist">Pieter Claesz</div>
+          <div class="painting-meta">Oil on panel · 37.1 × 51.3 cm<br>Signed with monogram and dated lower left: PC 1642</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="painting-card reveal has-entry" data-entry="van-de-velde" tabindex="0" role="button" aria-label="View catalogue entry: Still Life with an Earthenware Jug, a Tortoise Shell Tobacco Box, a ‘Gouda’ Pipe, a Glass of Beer and Tobacco Smoking Implements">
+        <div class="painting-frame">
+          <img src="images/still-life-with-an-earthenware-jug-and-a-gouda-pipe-jan-van-de-velde-iii.jpg" alt="Still Life with an Earthenware Jug and a Gouda Pipe, Jan van de Velde III" loading="lazy">
+        </div>
+        <div class="painting-info">
+          <div class="painting-title">Still Life with an Earthenware Jug, a Tortoise Shell Tobacco Box, a ‘Gouda’ Pipe, a Glass of Beer and Tobacco Smoking Implements</div>
+          <div class="painting-artist">Jan van de Velde III</div>
+          <div class="painting-meta">Oil on panel · 38.1 × 29.8 cm<br>Signed and dated 1658</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="painting-card reveal has-entry" data-entry="van-der-pluym" tabindex="0" role="button" aria-label="View catalogue entry: Tronie of a Man with a Tall, Fur-Edged Red Cap">
+        <div class="painting-frame">
+          <img src="images/tronie-of-a-man-with-a-tall-fur-edged-red-cap-karel-van-der-pluym.jpg" alt="Tronie of a Man with a Tall, Fur-Edged Red Cap, Karel van der Pluym" loading="lazy">
+        </div>
+        <div class="painting-info">
+          <div class="painting-title">Tronie of a Man with a Tall, Fur-Edged Red Cap</div>
+          <div class="painting-artist">Karel van der Pluym</div>
+          <div class="painting-meta">Oil on panel · 22 × 19 cm</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+      <div class="painting-card reveal has-entry" data-entry="berckheyde" tabindex="0" role="button" aria-label="View catalogue entry: View of the Old Stock Exchange at Amsterdam">
+        <div class="painting-frame">
+          <img src="images/view-of-the-old-stock-exchange-at-amsterdam-job-berckheyde.jpg" alt="View of the Old Stock Exchange at Amsterdam, Job Berckheyde" loading="lazy">
+        </div>
+        <div class="painting-info">
+          <div class="painting-title">View of the Old Stock Exchange at Amsterdam</div>
+          <div class="painting-artist">Job Berckheyde</div>
+          <div class="painting-meta">Oil on panel · 23.3 × 17.9 cm<br>Signed lower right: HBerck heyde f</div>
+          <span class="painting-more">View catalogue entry <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH & DISCOVERIES -->
+<div class="research-wrap" id="research">
+  <div class="research-inner">
+    <div class="section-header reveal" style="margin-bottom:32px">
+      <h2 class="section-title">Research &amp; <em>discoveries</em></h2>
+    </div>
+    <p class="research-intro reveal">
+      Research lies at the heart of Salomon Lilian. At the gallery’s research centre in Amsterdam, art historians study each acquisition – its attribution, its provenance, its place in the artist’s oeuvre – and publish their findings in the gallery’s annual catalogue, issued since 1992. Their work regularly brings forgotten paintings back to light.
+    </p>
+    <div class="discoveries">
+      <button type="button" class="discovery reveal" data-open="marrel">
+        <span class="discovery-thumb"><img alt="" data-thumb="marrel"><span class="discovery-tag">New acquisition</span></span>
+        <span class="discovery-kicker">Jacob Marrel</span>
+        <span class="discovery-title">On the eve of the crash</span>
+        <span class="discovery-text">Painted in 1635, two years before the tulip market collapsed, this bouquet is crowned by a Semper Augustus, a single bulb of which could cost as much as a canal house in Amsterdam.</span>
+        <span class="discovery-more">Read the entry <span aria-hidden="true">→</span></span>
+      </button>
+      <button type="button" class="discovery reveal" data-open="lievens">
+        <span class="discovery-thumb"><img alt="" data-thumb="lievens"><span class="discovery-tag">On loan · Gotha</span></span>
+        <span class="discovery-kicker">Jan Lievens</span>
+        <span class="discovery-title">Out of the shadow</span>
+        <span class="discovery-text">Dismissed as a copy in 1932 and overlooked for nearly a century, this tronie is now recognised as a fully autograph work, painted c. 1630/32.</span>
+        <span class="discovery-more">Read the entry <span aria-hidden="true">→</span></span>
+      </button>
+      <button type="button" class="discovery reveal" data-open="swabian-red-hat">
+        <span class="discovery-thumb"><img alt="" data-thumb="swabian-red-hat"></span>
+        <span class="discovery-kicker">Swabian School, c. 1480</span>
+        <span class="discovery-title">A hand on the shoulder</span>
+        <span class="discovery-text">Restoration revealed a woman’s hand resting on the sitter’s shoulder: the portrait was once one half of a double portrait, possibly of Eitel Friedrich II von Hohenzollern and his bride.</span>
+        <span class="discovery-more">Read the entry <span aria-hidden="true">→</span></span>
+      </button>
+      <button type="button" class="discovery reveal" data-open="rubens-rosary">
+        <span class="discovery-thumb"><img alt="" data-thumb="rubens-rosary"></span>
+        <span class="discovery-kicker">Peter Paul Rubens</span>
+        <span class="discovery-title">Rubens at work</span>
+        <span class="discovery-text">Last seen in public over forty years ago, Rubens’ oil sketch for the altar piece now in Moscow has been restored to its original clarity.</span>
+        <span class="discovery-more">Read the entry <span aria-hidden="true">→</span></span>
+      </button>
+      <button type="button" class="discovery reveal" data-open="verelst">
+        <span class="discovery-thumb"><img alt="" data-thumb="verelst"></span>
+        <span class="discovery-kicker">Pieter Verelst</span>
+        <span class="discovery-title">A seal on the reverse</span>
+        <span class="discovery-text">Unknown until 2026, this self portrait bears Verelst’s own monogram in a red wax seal, suggesting it remained in the painter’s possession.</span>
+        <span class="discovery-more">Read the entry <span aria-hidden="true">→</span></span>
+      </button>
+      <button type="button" class="discovery reveal" data-open="rottenhammer">
+        <span class="discovery-thumb"><img alt="" data-thumb="rottenhammer"></span>
+        <span class="discovery-kicker">Hans Rottenhammer</span>
+        <span class="discovery-title">A date rediscovered</span>
+        <span class="discovery-text">Known for decades only from an old black-and-white photograph, and believed to date from the 1590s, this signed copper has resurfaced: it was painted in Venice in 1601, the only signed version of a much-copied composition.</span>
+        <span class="discovery-more">Read the entry <span aria-hidden="true">→</span></span>
+      </button>
+    </div>
+    <p class="loan-notice reveal">
+      <span class="loan-label">Currently on loan</span>
+      Jan Lievens’ <em>Tronie of a Bearded Old Man</em> is on view in the exhibition <em>Rembrandt 1632. Creation of a brand</em>, Herzogliches Museum, Gotha, until 6 December 2026.
+      <a href="https://www.codart.nl/guide/agenda/rembrandt-1632-creation-of-a-brand/" target="_blank" rel="noopener">Exhibition details <span aria-hidden="true">→</span></a>
+    </p>
+    <a hidden style="display:none" id="pdf-rubens-hercules" class="research-toggle-link" href="files/Rubens-Hercules-as-a-Gladiator-Provenance.pdf" target="_blank" rel="noopener" download="Rubens-Hercules-as-a-Gladiator-Provenance.pdf">
+        <span class="arrow">&rsaquo;</span> View the full research dossier (PDF, 14 pages)
+      </a>
+  </div>
+</div>
+
+<!-- LOCATIONS -->
+<div class="locations-wrap" id="contact">
+  <div class="locations-inner">
+    <div class="section-header reveal" style="margin-bottom:0">
+      <h2 class="section-title">Two cities, <em>one eye</em></h2>
+    </div>
+    <div class="locations-grid reveal">
+      <div class="location-card">
+        <div class="location-city">Amsterdam</div>
+        <div class="location-country">The Netherlands · Research Centre</div>
+        <div class="location-addr">Spiegelgracht 5<br>1017 JP Amsterdam</div>
+        <div class="location-note">By appointment · Historic Canal District</div>
+      </div>
+      <div class="location-card">
+        <div class="location-city">Geneva</div>
+        <div class="location-country">Switzerland · Gallery</div>
+        <div class="location-addr">Rue Verdaine 6<br>CH-1204 Geneva</div>
+        <div class="location-note">By appointment · Old Town</div>
+      </div>
+    </div>
+    <div class="contact-line reveal">
+      <span class="contact-label">Telephone</span>
+      <a href="tel:+33627812629">+33 627 812 629</a>
+    </div>
+    <div class="contact-line reveal">
+      <span class="contact-label">Email</span>
+      <a href="mailto:salomonlilianoldmasters@gmail.com">salomonlilianoldmasters@gmail.com</a>
+    </div>
+
+    <div class="visit reveal">
+      <a class="visit-film" href="https://www.youtube.com/watch?v=ChZaGW0yRDo" target="_blank" rel="noopener" aria-label="Watch the film Inside Salomon Lilian Gallery on YouTube">
+        <img src="https://i.ytimg.com/vi/ChZaGW0yRDo/maxresdefault.jpg" alt="" loading="lazy">
+        <span class="visit-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+      </a>
+      <div class="visit-text">
+        <span class="visit-kicker">Film</span>
+        <div class="visit-title">Inside Salomon Lilian Gallery</div>
+        <p>Step inside the gallery with 5000 Years Academy, and meet the paintings and the people behind them.</p>
+        <a class="visit-link" href="https://www.youtube.com/watch?v=ChZaGW0yRDo" target="_blank" rel="noopener">Watch on YouTube <span aria-hidden="true">→</span></a>
+        <a class="visit-link visit-ig" href="https://www.instagram.com/salomon_lilian_geneva/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg> Follow us on Instagram</a>
+      </div>
+    </div>
+
+    <div style="margin-top:56px" id="fairs">
+      <div class="section-header reveal" style="margin-bottom:28px">
+        <h2 class="section-title">Fairs &amp; <em>exhibitions</em></h2>
+      </div>
+      <div class="fairs-row reveal">
+        <a class="fair-chip" href="https://www.tefaf.com/" target="_blank" rel="noopener"><div class="fair-dot"></div><div><div class="fair-name">TEFAF Maastricht</div><div class="fair-loc">Annual · March</div></div><span class="fair-arrow" aria-hidden="true">→</span></a>
+        <a class="fair-chip" href="https://www.frieze.com/fairs/frieze-masters" target="_blank" rel="noopener"><div class="fair-dot"></div><div><div class="fair-name">Frieze Masters</div><div class="fair-loc">Annual · London · October</div></div><span class="fair-arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">Salomon Lilian · Dutch Old Master Paintings</span>
+  <a class="footer-ig" href="https://www.instagram.com/salomon_lilian_geneva/" target="_blank" rel="noopener" aria-label="Salomon Lilian on Instagram"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg></a>
+  <span class="footer-copy">Amsterdam · Geneva · Est. 1989</span>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => obs.observe(r));
+</script>
+
+
+<dialog class="entry-dialog" id="entry-dialog" aria-labelledby="entry-title">
+  <button class="entry-close" type="button" aria-label="Close">&times;</button>
+  <div class="entry-media"><img id="entry-img" alt=""></div>
+  <div class="entry-text" id="entry-text"></div>
+</dialog>
+<a id="pdf-rubens-rosary" href="files/Peter-Paul-Rubens-Virgin-and-Child-of-the-Rosary.pdf" download="Peter-Paul-Rubens-Virgin-and-Child-of-the-Rosary.pdf" hidden></a>
+<a id="pdf-swabian-red-hat" href="files/Swabian-School-Portrait-of-a-Man-with-a-Red-Hat.pdf" download="Swabian-School-Portrait-of-a-Man-with-a-Red-Hat.pdf" hidden></a>
+<a id="pdf-lievens" href="files/Jan-Lievens-Salomon-Lilian.pdf" download="Jan-Lievens-Salomon-Lilian.pdf" hidden></a>
+<a id="pdf-sweerts-turban" href="files/Michael-Sweerts-Young-Man-Wearing-a-Turban.pdf" download="Michael-Sweerts-Young-Man-Wearing-a-Turban.pdf" hidden></a>
+<a id="pdf-verelst" href="files/Pieter-Verelst-Self-Portrait-with-a-Black-Beret.pdf" download="Pieter-Verelst-Self-Portrait-with-a-Black-Beret.pdf" hidden></a>
+<a id="pdf-backer" href="files/Jacob-Backer-Tronie-of-a-Bearded-Man-with-a-Large-Beret.pdf" download="Jacob-Backer-Tronie-of-a-Bearded-Man-with-a-Large-Beret.pdf" hidden></a>
+<a id="pdf-berckheyde" href="files/Job-Berckheyde-View-of-the-Old-Stock-Exchange-at-Amsterdam.pdf" download="Job-Berckheyde-View-of-the-Old-Stock-Exchange-at-Amsterdam.pdf" hidden></a>
+<a id="pdf-sweerts-backgammon" href="files/Michael-Sweerts-Backgammon-Players.pdf" download="Michael-Sweerts-Backgammon-Players.pdf" hidden></a> <a id="pdf-marrel" href="files/Jacob-Marrel-A-Tulip-Mania-Painting.pdf" download="Jacob-Marrel-A-Tulip-Mania-Painting.pdf" hidden></a> <a id="pdf-van-der-pluym" href="files/Karel-van-der-Pluym-Tronie-of-a-Man-with-a-Tall-Fur-Edged-Red-Cap.pdf" download="Karel-van-der-Pluym-Tronie-of-a-Man-with-a-Tall-Fur-Edged-Red-Cap.pdf" hidden></a> <a id="pdf-claesz" href="files/Pieter-Claesz-Still-Life-1642-entry-by-Martina-Brunner-Bulst.pdf" download="Pieter-Claesz-Still-Life-1642-entry-by-Martina-Brunner-Bulst.pdf" hidden></a> <a id="pdf-van-de-velde" href="files/Jan-van-de-Velde-III-Still-Life-with-an-Earthenware-Jug.pdf" download="Jan-van-de-Velde-III-Still-Life-with-an-Earthenware-Jug.pdf" hidden></a> <a id="pdf-rottenhammer" href="files/Hans-Rottenhammer-Adoration-of-the-Christ-Child-with-Angels.pdf" download="Hans-Rottenhammer-Adoration-of-the-Christ-Child-with-Angels.pdf" hidden></a>
+<script type="application/json" id="entry-data">{"rubens-hercules": {"artist": "Peter Paul Rubens", "life": "Siegen 1577 – 1640 Antwerp", "title": "Hercules as a Gladiator", "details": ["Oil on panel", "65.5 × 54.4 cm"], "lists": [["Provenance", ["Belgium, with an aristocratic family for several generations", "New York, Jack Kilgore & Co, by 2010, by whom sold to", "New York, Leiden Collection, until 2023"]], ["Literature", ["P.C. Sutton, Peter Paul Rubens, Emperor Commodus as Hercules and Gladiator, circa 1597-99, unpublished factsheet Jack Kilgore & Co., New York 2011", "P.C. Sutton, Peter Paul Rubens : Portrait of the Emperor Servius Sulpicius Galba (3 BC – 69 AD), Amsterdam, Salomon Lilian Dutch Old Master Paintings 2014, pp. 4-5, fig. 1", "K. Jonckheere, Portraits after Existing Prototypes (Corpus Rubenianum Ludwig Burchard XIX/4), Turnhout/London 2016, pp. 85, 102, cat. no. 35a, fig. 139", "I. van Tuinen, ‘Emperor Commodus as Hercules and as a Gladiator’ (2017), in: A.K. Wheelock Jr., L. Yeager-Crasselt (eds.), The Leiden Collection Catalogue (3rd ed.), New York 2020", "L. Yeager-Crasselt, ‘The Leiden Collection and the Dutch Golden Age’, in: P. Lyubimova (ed.), The Age of Rembrandt and Vermeer : Masterpieces of The Leiden Collection, exh. cat. Moscow, The Pushkin State Museum of Fine Arts, St. Petersburg, The State Hermitage Museum 2018-2019, pp. 16-27, p. 18, note 12; pp. 28-33, p. 29, note 12", "L. Yeager-Crasselt, ‘The Leiden Collection and the Dutch Golden Age’, in: B. Ducos, L. Yeager-Crasselt (eds.), Rembrandt, Vermeer and the Dutch Golden Age : Masterpieces from The Leiden Collection and the Musée du Louvre, exh. cat. Abu Dhabi, Louvre Abu Dhabi 2019, pp. 24-31, p. 26, note 10", "A.T. Woollett, ‘Toward a living past: Rubens and the antique Triumph’, in: A.T. Woollett, D. Gasparotto, J. Spier (eds.), Rubens : Picturing Antiquity, exh. cat. Los Angeles, J. Paul Getty Museum 2021-2022, pp. 70-84, p. 75, and p. 106, cat. no. 20, ill.", "J. Wood, B. Schepers, in: E. McGrath, B. Schepers, B. Vanoppen (eds.), Mythological Subjects : Hercules to Olympus (Corpus Rubenianum Ludwig Burchard XXI/2), 2 vols., Turnhout/London 2022, 1, pp. 106-107, note 32"]], ["Exhibited", ["Wellesley (MA), Davis Museum at Wellesley College, on loan 2016-2017", "Shanghai, Long Museum, 2017-2018", "Los Angeles, J. Paul Getty Museum (Malibu, Getty Villa), 2021-2022, no. 20"]]], "essay_heading": null, "essay": ["Datable to the very end of the sixteenth century (c. 1599–1600) on the basis of dendrochronology and stylistic analysis, this well-preserved panel marks the close of Rubens' youth and the beginning of his mature career. It is loosely related to the ambitious series of Roman emperor portraits the young Rubens produced around 1598–1600, yet stands apart through its exceptional quality and inventive iconography — combining the attributes of Hercules, a Roman gladiator of the Hoplomachus type, and possibly the emperor Hadrian. Long mistaken for a portrait of the emperor Commodus dressed as Hercules, the identification has since been revised: the sitter's features do not match the securely documented Commodus portrait in the Stuttgart/Phoebus series. The panel is discussed at length by Koenraad Jonckheere as an outstanding example of the young Rubens \"thinking\" through paint — testing physiognomy, gesture and allegory years before his Italian period."], "pdf": {"id": "pdf-rubens-hercules", "label": "Download the full research dossier (PDF, 14 pages)"}}, "rubens-rosary": {"artist": "Peter Paul Rubens", "life": "Siegen 1577 – 1640 Antwerp", "title": "The Virgin and Child of the Rosary", "details": ["Oil on panel", "42.8 × 34.3 cm"], "lists": [["Provenance", ["Probably sale London, Henry Phillips, 2-3 February 1804, lot 149 (this lot: 3 February)", "Paris, Galerie Sedelmeyer, by 1897, by whom sold to", "New York, collection Edward Rathbone Bacon (1848-1915)", "Paris, art dealer Eugène Fischhof (1853-1926)", "The Hague, collection Dorus van Germsen (1871-1931) / Galerie Huys van Johan de Witt, until 1930", "New York, art dealer Julius H. Weitzner (1896-1984), by 1930, at least until 1936", "Princeton, collection Edward Leavitt Howe (1870-1952), bought from the above in 1942 (on consignment with Schaeffer & Brandt, Inc. between 1943 and November 1945); by descent to his wife, Adelaide Foster Howe (1901-1991), Princeton (NJ)", "Sale New York, Christie's, 18 January 1984, lot 163", "United States, private collection, until 2024"]], ["Literature", ["M. Rooses, Rubens’ leven en werken, Amsterdam/Antwerp/Ghent 1903, p. 543 (French ed., Paris 1903, idem.)", "J.B. Townsend, W. Stanton Howard, J. Getz, Memorial catalogue of paintings by old and modern masters collected by Edward R. Bacon, New York 1919, p. 144, cat. no. 179", "W.R. Valentiner, An exhibition of sixty paintings and drawings by Rubens, exh. cat. Detroit, Detroit Institute of Arts 1936, n.p., cat. no. 50 (loaned by Julius H. Weitzner, New York)", "A selection of paintings, exh. cat. Julius H. Weitzner, Inc., New York 1936, n.p., cat. no. 8, ill.", "L.M. Nash, Peter Paul Rubens : Loan Exhibition for the Benefit of the United Hospital Fund of New York, exh. cat. New York, Schaeffer & Brandt, Inc. 1942, n.p., cat. no. 22", "W.R. Valentiner, ‘Rubens Paintings in America’, in: The Art Quarterly 9 (1946), pp. 153-168, p. 163, no. 92", "J.-A. Goris, J.S. Held, Rubens in America, New York 1947, p. 34, cat. no. 55", "E. Larsen, P.P. Rubens : with a complete catalogue of his works in America, Antwerp 1952, pp. 217-218, cat. no. 72", "J.S. Held, The Oil Sketches of Peter Paul Rubens : A Critical Catalogue, 2 vols., Princeton 1980, 1, pp. 522-523, cat. no. 386; 2, pl. 377", "L.J. van Nueten, R. van Wassenhove, Catharina van Siëna 1380-1980, Leuven 1980, p. 169", "J.S. Held, ‘New Oil Sketches by Peter Paul Rubens’, in: The Burlington Magazine 129 (1987), pp. 572-583, pp. 573, 583 (Appendix)", "M. Jaffé, Catalogo Completo : Rubens, Milan 1989, p. 328, cat. no. 1050, ill.", "M. Mees, ‘Van Kluis naar Hermitage : Het Rozenkransschilderij van P.P. Rubens uit de Kluizekerk van Lier’, in: Lira Elegans : Jaarboek Liers Genootschap voor Geschiedenis 1 (1991), pp. 109-154, pp. 124-126, fig. 4", "F. Healy (B. Vanoppen, ed.), The Holy Trinity, The Life of the Virgin, Madonnas and The Holy Family : 1. The Holy Trinity and The Life of the Virgin (Corpus Rubenianum Ludwig Burchard IV/1), 2 vols., London/Turnhout 2024, 1, pp. 287, 288; 2, fig. 334", "To be included in B. Vanoppen, The Holy Trinity, The Life of the Virgin, Madonnas and The Holy Family: The Holy Family (Corpus Rubenianum Ludwig Burchard IV/3)"]], ["Exhibited", ["Detroit, Detroit Institute of Arts, An Exhibition of Sixty Paintings and Drawings by Rubens, 1936, no. 50", "New York, Schaeffer & Brandt, Inc., Peter Paul Rubens : Loan Exhibition for the Benefit of the United Hospital Fund of New York, 1942, no. 22 (loaned by Howe)"]]], "essay_heading": "A sketch and an altar piece", "essay": ["The recently surfaced painting here under discussion, last seen in public over forty years ago, is Peter Paul Rubens’ autograph oil sketch done in preparation for a large altar piece with the same composition executed by Rubens and his workshop, which is kept in the Pushkin Museum in Moscow since 1924. Both sketch and altar piece depict the Virgin Mary, with the Christ child standing on her lap, presenting a rosary to St Dominic and others. The fine, balanced composition exudes grandeur but maintains a sense of intimacy. Executed with admirable economy, using only red, ochre, black and white over a swift brown outline, and painted directly on the imprimatura, the oil sketch lays down all the essential parts of the larger painting.", "The small panel served as the ‘canvas’ for Rubens’ creative process, as the scale model that he could show to his patrons, and as the basis for him and his assistants in the creation of the larger work, which was originally made for the Kluizekerk (church of the Cell, or Hermitage), the Dominican church in Lier, about fifteen kilometers southwest of Antwerp. The altar piece is recorded for the first time in 1763, when it is described as standing on the Kluizekerk’s high altar. Soon after, it was sold to the Count of Cobenzl, from whom it was bought, in 1768, by Catherine the Great for the Hermitage in St Petersburg.", "Until the surfacing of our oil sketch in 2024, the work had not been restored for at least a near century. Thick layers of dirt and old, yellowed varnish seriously impeded the view. The recent treatment was thus long due, and effected a satisfying transformation, the painting’s fatigued appearance giving way to its intended clarity. The result allows us, for the first time since the work’s recorded history, to fully appreciate Rubens’ crisp tonality, his light-fingered brushstrokes, and the velocity and efficiency of his creative process."], "pdf": {"id": "pdf-rubens-rosary", "label": "Download the full catalogue entry (PDF)"}}, "swabian-red-hat": {"artist": "Swabian School", "life": "c. 1480", "title": "Portrait of a Man with a Red Hat, possibly Eitel Friedrich II von Hohenzollern (1452-1512)", "details": ["Oil on panel", "52.5 × 35.5 cm"], "lists": [["Provenance", ["Rome, collection of Cavaliere Ludovic de Spiridon", "His sale, Amsterdam, Frederik Muller & Cie, 19 June 1928, lot 48, as attr. to Dieric Bouts", "Spain, private collection until 2022"]], ["Literature", ["W. Schöne, Dieric Bouts und seine Schule, Berlin/Leipzig 1938, p. 217, cat. no. 153, as follower of Dieric Bouts"]]], "essay_heading": "The portrait", "essay": ["The recently surfaced Portrait of a Man with a Red Hat is a magnificent example of Northern renaissance portraiture. Depicted against a deep black background is a man wearing a high bright red hat and a blue cloak over a white chemise. In the red hat several pentimenti are visible – an earlier rendering of the hat was somewhat smaller – neatly revealing the creative process. Our sitter is clearly a man of stature, probably around thirty years old. His face is finely modelled, showing a subtle variety of pink tones for the incarnate and arresting care for detail around the eyelids. The sitter’s gaze, serious and fierce, is directed at the beholder. With his right index finger he points to his left hand, in which he holds a paper scroll. The painting’s execution is exceptional, striking a neat balance between refined detail and monumental grandeur.", "The recent restoration of our male portrait has revealed a woman’s original hand on our sitter’s shoulder. One can even see the remains of the precious red stone that once adorned the ring on her index finger, and the remains of the ring around her thumb. This discovery proves unequivocally that the present portrait and the Portrait of a Young Woman formerly in the Kisters Collection once formed one painting, and that they were separated at a certain moment in time.", "Among the highest nobility in Swabia we find a candidate with a neatly fitting profile – both physical and social: count Eitel Friedrich II von Hohenzollern (1452-1512). He married Magdalene of Brandenburg (1460-1496) in Berlin on 17 June 1482. Their marriage aligns perfectly with the presumed age of our sitter (about thirty), with the age of the bride (around twenty-two), with the dating of the panel, which was ready for use in 1481, and with the imagery of the double portrait, which clearly alludes to the bond between the sitters."], "pdf": {"id": "pdf-swabian-red-hat", "label": "Download the full catalogue entry (PDF)"}}, "lievens": {"artist": "Jan Lievens", "life": "Leiden 1607 – 1674 Amsterdam", "title": "A Tronie of a Bearded Old Man in Profile, Facing Left", "details": ["Oil on panel", "56.3 × 45.8 cm"], "lists": [["Provenance", ["Probably Cologne, collection Paul Esch (1875-1950), 1922", "Cologne, private collection for generations, until 2024"]], ["Literature", ["H. Schneider, Jan Lievens: Sein Leben und seine Werke, Haarlem 1932 (rev. ed. H. Schneider, R.E.O. Ekkart, Amsterdam 1973), p. 134, under cat. no. 165 (panel, 60 x 50 cm., signed with Rembrandt’s monogram and dated 1631, copy after the work in the Hermitage, St Petersburg)", "W. Sumowski, Gemälde der Rembrandtschüler, 6 vols., Landau/Pfalz 1983-1994, 3 (1983), p. 1805, under cat. no. 1278 (repeating Schneider 1932)", "B. Schnackenburg, Jan Lievens : friend and rival of the young Rembrandt : with a catalogue raisonné of his early Leiden work 1623-1632, Petersberg 2016, p. 396, under cat. no. 198 (repeating Schneider 1932)", "I. Sokolova, The State Hermitage Museum : Dutch painting seventeenth - eighteenth centuries : catalogue of the collection, 5 vols., St Petersburg 2017, 2, p. 308, under cat. no. 686 (repeating Schneider 1932)", "J. Lange, T. Trümper et al. (eds.), Rembrandt 1632: Entstehung einer Marke / Creation of a Brand, exh. cat. Kassel, Gemäldegalerie Alte Meister, Gotha, Herzogliches Museum, Petersberg 2026, ill."]], ["Exhibited", ["Kassel, Gemäldegalerie Alte Meister, Rembrandt 1632. Creation of a brand, 7 May – 9 August 2026; Gotha, Herzogliches Museum, 6 September – 6 December 2026"]], ["Related work", ["Jan Lievens, Bust of a Greybeard Facing Left, oil on panel, 62 x 50.5 cm., St Petersburg, State Hermitage Museum, inv. GE-7362"]]], "essay_heading": "Out of the shadow", "essay": ["A painting’s fate can be sealed for generations by one scholar’s early judgement. In his encompassing monograph and catalogue raisonné Jan Lievens: Sein Leben und seine Werke, published in 1932, the Swiss art historian and director of the Netherlands Institute for Art History (RKD) in The Hague Hans Schneider (1888-1953) notes under his catalogue number 165, Jan Lievens’ Bust of a Greybeard in the Hermitage the existence of ‘a copy (panel, 60 x 50, signed with Rembrandt’s monogram and dated 1631) in the collection P. Esch in Cologne, 1922’. Although the measurements given by Schneider differ slightly, and the (false) Rembrandt monogram and the date 1631 are no longer present, the painting Schneider described in the collection of the Cologne lawyer and writer Adam Paul Esch (1875-1950) is in fact the present Lilian work.", "As the better-known painting in the Hermitage was thus embraced as Lievens’ original, the present work was – with precious little motivation – all too easily deemed a ‘copy’. However, in Lievens we find a young and notoriously restless artist, whose endless curiosity led him to sometimes revisit earlier efforts, in part to speed up production and meet client demand, but just as much to experiment with variant styles, techniques and compositional adjustments, producing creative reinterpretations with alternate results. Following the surfacing of the present work, both Schnackenburg (2022) and De Witt (2025) inspected the work firsthand, and independently concluded that it concerns a fully autograph rendering, datable around the same period as the Hermitage painting, c. 1630/32.", "Indeed, looking at both works it is clear that although the model is likely the same individual, the two paintings differ so significantly, and on various levels, that one might best regard them as variations, rather than versions. The face and the incarnate in the Lilian painting were executed with coloristic bravura – white, greys, various pinks and red, all adding to a dazzling unity – and a phenomenal paint handling with short individual strokes that drape the wrinkles and the sinuous veins around the glimmering black eye. Such are the differences, that we can safely conclude that Lievens varied all of this on purpose, leaving the overall impression that in the present painting he endeavoured to convey the sitter as alert and energetic, in the Hermitage painting as more tranquil, sedate. Extravert versus introvert, the vita activa versus the vita contemplativa, as it were."], "pdf": {"id": "pdf-lievens", "label": "Download the full catalogue entry (PDF)"}}, "sweerts-turban": {"artist": "Michael Sweerts", "life": "Brussels 1618 – 1664 Goa", "title": "A Young Man Wearing a Turban Holding an Upturned Glass: The Fingernail Test (Allegory of Taste)", "details": ["Oil on canvas", "75 × 58.4 cm"], "lists": [["Provenance", ["Berne, Dr. Bruno Kaiser (1877–1941)", "By inheritance, 1941, to a private collection, for two generations", "By whom sold, London, Christie’s, 8 December 1995, lot 34, where acquired by", "Monaco, collection Emanuel Wolfe (Manny) Davidson (1931-2024)", "His estate sale, Paris, Sotheby’s, 5 November 2025, lot 48"]], ["Literature", ["W. Liedtke, Dutch Paintings in the Metropolitan Museum of Art, 2 vols., New York 2006, 1, pp. 269-270, under cat. no. 61, note 11", "L. Shaw-Miller, ‘‘Beautiful Secrets’: Poetical Disclosure in the Work of Michael Sweerts’, in: M. McNeill Hale (ed.), Cambridge and the study of Netherlandish art : the Low Countries and the Fens, Turnhout 2016, pp. 124-137, pp. 128, 130, fig. 5"]]], "essay_heading": "A new addition to Sweerts’ oeuvre", "essay": ["The present work, a monumental bust of a young man holding a glass, first surfaced in a London auction in December 1995, understandably too late for its inclusion in Rolf Kultzen’s monograph on Sweerts, which was published in 1996. Set against a near black background, our painting depicts a young dark-haired man, presumably about 30 years old, with a light skin, a firm nose and dark eyes, full red lips, and a mole on his chin. He is dressed in a white headscarf with embroidered border and a white chemise underneath a simple, collarless, ochre and red-rimmed buttoned jacket. As he looks at the beholder with a sympathetic demeanour, he holds in his left hand a fine, greenish façon de Venise wine glass – upside down, its rim on the nail of his right-hand thumb. Sweerts painted the work with much vigour, expertly alternating smoother passages such as the fabric of the jacket with bold impasto brushwork, especially in the incarnate, the spectacular cuffs and the well struck glass.", "During festivities, or when making a toast to a host or a guest, one would customarily drink down a glass of red wine in one gulp, pouring the very last red droplet (resembling a ruby) on one’s thumbnail, and then lick it as a sign of respect and homage to the person being celebrated. The expression ‘faire rubis sur l’ongle’ (to make a ruby on the nail) was thus used to indicate that the glass had been completely emptied.", "One of Sweerts’ most iconic paintings, the Boy in a Turban Holding a Nosegay in the Museo Thyssen-Bornemisza in Madrid, has been interpreted as depicting the sense of smell ever since its surfacing in 1955. Not only do these two works combine very well compositionally and colour-wise, but both are also thematically proper and conceptually matching representations of the senses (Smell and Taste) and – crucially – both share equal measurements. In summary, there is strong evidence in favour of the two works having originally belonged to the same series. Scholarly consensus nowadays places the Madrid painting unequivocally in Sweerts’ post-Italian years; the same dating, c. 1656/60, must likewise be applied to our work."], "pdf": {"id": "pdf-sweerts-turban", "label": "Download the full catalogue entry (PDF)"}}, "verelst": {"artist": "Pieter Verelst", "life": "Dordrecht 1618 – 1668 London", "title": "Self Portrait with a Black Beret", "details": ["Oil on panel", "25 × 20.8 cm", "A red wax seal on the reverse of the panel with Pieter Verelst’s monogram PVE (in ligature)"], "lists": [["Provenance", ["Probably The Hague, private collection Pieter Verelst, before 1668", "France, private collection, until 2026"]], ["Literature", ["Unpublished"]]], "essay_heading": "A new discovery", "essay": ["Until its surfacing in France in 2026, the present portrait was completely unknown to art history. Painted on a small panel, the work had not been touched since at least the nineteenth century, causing its appearance to be severely obscured by a film of opaque yellow varnish and dirt. A recent cleaning removed both these layers, as well as a crude black retouching above the sitter’s black velvet beret, apparently added to make the beret appear like a flat crown hat.", "What emerged is a mint condition portrait of a young man, seen to the right against a warm brown background, who looks at the beholder with a self-aware expression. His simple black jacket and plain white collar cause no distraction from his face and his long, chestnut coloured curly hair, which is painted with amazing ease in browns and black, to an almost lumpy effect. The daring black outline on the receding left side of the sitter’s face accentuates his profile brilliantly. Taking into consideration the flat velvet hat and the simple white collar, the portrait likely dates from the 1640s.", "Although the present painting is not signed in the usual sense, a red wax seal on the panel’s reverse remarkably shows what cannot be anything other than Verelst’s ligatured monogram: PVE. This waxed monogram is so strikingly identical to the monogram that Verelst often used to sign his paintings, that one can only conclude that the seal was his. This, in turn, suggests that the painting remained in Verelst’s own personal possession."], "pdf": {"id": "pdf-verelst", "label": "Download the full catalogue entry (PDF)"}}, "backer": {"artist": "Jacob Adriaensz Backer", "life": "Harlingen 1608/09 – 1651 Amsterdam", "title": "Tronie of a Bearded Man with a Large Beret", "details": ["Signed lower right: JAB (in ligature)", "Oil on panel", "66 × 51 cm"], "lists": [["Provenance", ["Vienna, collection professor Eduard Mahler (1857-1945), by descent", "Brazil, collection of Mahler’s daughter, from 1930 onward, thence by descent, until 2020"]], ["Literature", ["Unpublished"]]], "essay_heading": "The Bearded Man", "essay": ["Against a dark green background, an imposing, ruddy-bearded and longhaired man, his head turned rightwards, peers out at us with curiosity, from underneath a rather large brown beret. Over his white undergarment this man wears a greenish-grey doublet, covered by a brown fur-lined cloak, which is fastened by gold brocade braids on the chest. Narrow-framed in the picture plane, his presence is direct and intense. While essentially good-natured, he exudes a robust stoutness.", "Possibly more than anywhere else in his oeuvre, Backer displays his turbulent side here. The beard and the moustache are built up from an irregular variety of lighter and darker brown curls, the mouth is rendered with a bold dark smear above the pink of the lower lip, and the eyes and eyelids – trademark Backer – are executed with admirable swiftness. Still, Backer’s brilliance shows most of all in the impasto of the incarnate. Rough, patchy and dynamic, with thick highlights alternating with open areas of ground layer to three-dimensional effect, it is the result of spirited intuition, as much as skillful execution.", "Backer, who had acquainted himself with Rembrandt’s work in Leeuwarden, became Rembrandt’s main competitor in Amsterdam’s single bust tronie market. The present bust, a recent discovery and a marvelous addition to Backer’s oeuvre, should likely be dated c. 1634-1637."], "pdf": {"id": "pdf-backer", "label": "Download the full catalogue entry (PDF)"}}, "berckheyde": {"artist": "Job Berckheyde", "life": "1630 – Haarlem – 1693", "title": "View of the Old Stock Exchange at Amsterdam", "details": ["Signed lower right: HBerck heyde f (HB in ligature)", "Oil on panel", "23.3 × 17.9 cm"], "lists": [["Provenance", ["Possibly sale Amsterdam, 13 April 1695 (Lugt no. 156), lot 13, for fl. 13,-", "Possibly Amsterdam, collection Jan van der Heijden (1637-1712) and Sara Hiel (d. 1712)", "Paris, collection Louis François I, Prince of Conti (1727-1776)", "Paris, collection Jean-Baptiste Antoine Poullain (d. 1780)", "His estate sale, Paris Langlier, Le Brun, Julliot, 15-21 March 1780 (Lugt no. 3106) (this lot: 16 March), lot 87 (as Gerrit Berckheyde), for 58 francs to", "Paris, collection Jacques Langlier (1732-1814)", "Paris, collection Charles-Alexandre de Calonne (1734-1802), Count of Hannonville, a.k.a. Calonne Angelot", "His sale, Paris, Lebrun, Bruslez, Huissier, 11 May 1789 (Lugt no. 4445), lot 60, where bought by Plantier", "Frankfurt am Main, collection Johann Friedrich Städel (1728–1816), bequeathed in 1816 to", "Frankfurt am Main, Städelsches Kunstinstitut und Städtische Galerie, until 1830, when sold,", "Amsterdam, art market, 1830", "Richmond, Doughty House, collection Sir Francis Cook, 1st Baronet, 1st Viscount of Monserrate (1817-1901)", "Richmond, Doughty House, collection Sir Frederick Lucas Cook, 2nd Baronet (1844-1920), by inheritance to", "Richmond, Doughty House, collection Sir Herbert Frederick Cook, 3rd Baronet (1868-1939), until at least 1932", "Paris, collection André and Françoise Kostolany (1906-1999), thence by inheritance, until 2026"]], ["Literature", ["G.A. Temple, Catalogue of the Loan Collection of Paintings, exh. cat. London, Guildhall, Art Gallery of the Corporation of London 1895, p. 74, cat. no. 105", "O. Kronig, in: H. Cook (ed.), A catalogue of the paintings at Doughty House, Richmond, & elsewhere in the collection of Sir Frederick Cook, bt., Visconde de Monserrate, 3 vols., London 1913-1915, 2 (Dutch and Flemish Schools, 1914), p. 7, cat. no. 209, ill.", "M.W. Brockwell, Abridged catalogue of the pictures at Doughty House, Richmond, Surrey in the collection of Sir Herbert Cook, Bart., London 1932, p. 38, cat. no. 209 (88)", "G. Jansen, J. Giltaij, Perspectives : Saenredam and the architectural painters of the 17th century, exh. cat. Rotterdam, Museum Boijmans Van Beuningen 1991, p. 279, note 4 (not in Dutch ed.)", "J. Sander et al., Städels Sammlung im Städel : Gemälde, exh. cat. Frankfurt am Main, Städelsches Kunstinstitut und Städtische Galerie 1991-1992, pp. 89, 107, cat. no. 201", "L. Krempel, Holländische Gemälde im Städel 1550-1800 : Band 2: Künstler geboren 1615 bis 1630 (Kataloge der Gemälde im Städelschen Kunstinstitut Frankfurt am Main IX), Petersberg / Frankfurt am Main 2005, p. 32, note 7", "N.E. Middelkoop, in: N.E. Middelkoop, E. Schmitz (eds.), Amsterdam A Work of Art : The City Depicted in the Seventeenth Century, Amsterdam, exh. cat. Amsterdam, Stadsarchief, Amsterdam Museum 2026-27, pp. 166, 214, note 14"]], ["Exhibited", ["London, Guildhall, 1895, no. 105"]]], "essay_heading": null, "essay": ["In Amsterdam, Job almost exclusively chose views around Dam square, depicting the Townhall (now Royal Palace), Waag, Nieuwe Kerk, the Fish Market and the Stock Exchange. The latter is the subject of the present work, in which Berckheyde permits us a candid view of the Stock Exchange’s inner courtyard, a hive of activity where in the left foreground three gentlemen, dressed in fine, long black coats and broad brimmed hats, engage in conversation. Behind them a diverse crowd of traders and the like fill the courtyard. Under the colonnade to the left a bearded man with a paper in his hand is seen raising a stick. He is the ‘beursknecht’, the concierge of the Exchange who was among others responsible for the orderly adherence to the house rules and public announcements.", "In the centre of the court, behind the three men in black, four Orientals distinguish themselves by means of their exotic clothing. The red, turquoise, orange, purple and white accents provided by their cloaks, pants, hats and sandals contrast beautifully with the more sober palette of the environment. Moreover, their presence underlines Amsterdam’s position as the international centre of commerce, where people of different national and cultural backgrounds engaged in the early modern world trade. Looking ahead beyond the crowd, a view to the outside shows the raised sails of the boats at Rokin, and the silhouettes of the houses behind them.", "At least six depictions of the Amsterdam Stock Exchange by Job Berckheyde are known. The painting discussed here is the smallest of the group and the only work painted not on canvas but on panel. In contrast, moreover, emphasis in the present painting is redirected to the traders, whereas the other works provide more general overviews of the architecture and scenery. The whole group must have been painted after 1668, as all depict the architectural situation following the renovation of the building finalised that year."], "pdf": {"id": "pdf-berckheyde", "label": "Download the full catalogue entry (PDF)"}}, "sweerts-backgammon": {"artist": "Michael Sweerts", "life": "Brussels 1618 – 1664 Goa", "title": "Backgammon Players in an Interior", "details": ["Signed lower centre: MS", "Oil on canvas", "75 × 102 cm"], "lists": [["Provenance", ["Bologna, collection Ercolani family, for several generations until 2020"]], ["Literature", ["V. Bloch, Michael Sweerts, The Hague 1968, 23, fig. 18", "R. Kultzen, ‘Französche Anklänge im Werk von Michael Sweerts’, in: A.-M.S. Logan (ed.), Essays in northern European art : presented to Egbert Haverkamp-Begemann on his sixtieth birthday, Doornspijk 1983, pp. 127-133, pp. 128-129, fig. 2", "R. Kultzen, Michael Sweerts : Brussels 1618 – Goa 1664, Ghent 1996, pp. 31, 100, cat. no. 44, pl. 44", "P.C. Sutton, ‘Introduction’, in: G. Jansen, P.C. Sutton, Michael Sweerts (1618-1664), exh. cat. Amsterdam, Rijksmuseum, San Francisco, Fine Arts Museums of San Francisco, Hartford, Wadsworth Atheneum Museum of Art 2002, pp. 11-24, p. 16, fig. 11"]]], "essay_heading": null, "essay": ["The present painting – large, compositionally complex, ambitiously arranged, and masterful in its colouration – is one of the masterpieces of Sweerts’ early period, and one of five works that depict men playing games. We are introduced to a shadowy interior with a beautiful black and white tiled floor by a seated lute player in the left foreground, whose figure remains in shadow. Dressed in a brown fur-lined coat, a red cloak and a hat, he quietly plays his instrument as he looks out at the viewer. In the background a curtained door gives a glimpse of a gorgeous blue sky. The main light source, though, comes from the left, and illuminates the central table scene with a stark chiaroscuro.", "Around the table, two elegantly dressed young men with feathered hats play backgammon. While the man behind the table concentrates on his move, the other stares to the left, the dice waiting in his hand. A third man in a grey cloak, also at the table, watches in silence. Among the company we notice above all two attractive ladies with songbooks, one of whom looks over her shoulder to the left, where a man plays with a dog. In the right foreground, a magnificent still-life of a lute on a chair, a yellow cloak, and piled-up songbooks on a wooden box catches surprisingly bright light. Behind it, two boys fold a cloth, while in the dim background couples climb the stairs.", "Given the painting’s varied composition, Sweerts admirably succeeds in unifying its atmosphere, aptly described by Sweerts expert Rolf Kultzen as an ‘expectant silence.’ Indeed, a concentrated, psychological tension can be felt, both amongst the players and the entourage."], "pdf": {"id": "pdf-sweerts-backgammon", "label": "Download the full catalogue entry (PDF)"}}, "marrel": {"artist": "Jacob Marrel", "life": "Frankenthal 1613/14 – 1681 Frankfurt am Main", "title": "A Tulip Mania Painting", "details": ["Signed and dated lower centre: I . MARRELLUS . f / 1 . 6 . 35 .", "Oil on panel", "65 × 42 cm"], "lists": [["Provenance", ["Munich, Kunsthandel Andreas Meyer, 1886", "Palermo, Chiaramonte Bordonaro"]], ["Literature", ["Sestieri Catalogue, 1950, p. 11 (exhibited in Galleria dei Fiamminghi)", "Prof. Massimo Ferretti, La Collezione Chiaramonte Bordonaro, tesi scuola normale superiore 2015-2016, p. 18"]]], "essay_heading": null, "essay": ["Dated 1635, this exceptionally elaborate flower piece belongs to the very beginning of Jacob Marrel’s documented career as a painter of floral still lifes. Marrel had settled in Utrecht in the early 1630s, and his earliest known dated paintings are from 1634. A self-portrait dated 1635 records his age as twenty-one, making the present work an ambitious achievement by an artist still at the outset of his career. His earliest flower pieces reveal the impact of the Utrecht tradition represented by Roelant Savery (1576-1639), Balthasar van der Ast (1593-1657) and, in particular, Ambrosius Bosschaert the Younger (1609-1645).", "What immediately stands out are the spectacular broken/flamed tulips: the large red-and-white example at the top is the Semper Augustus tulip. The Semper Augustus was the most famous and generally regarded as the most valuable tulip of the Tulip Mania. At the height of the market in 1635-1637, a Semper Augustus was reportedly valued and offered at around 10,000 guilders for a single bulb – roughly the price of one of Amsterdam’s grandest canal houses.", "Jacob Marrel is directly connected with the Tulip Mania, and his work is among the most artistic documents of the phenomenon. The date 1635 gives the painting exceptional historical resonance. It predates the peak of the Tulip Mania by about two years, while showing precisely the highly prized broken tulips that subsequently became objects of extreme speculation."], "pdf": {"id": "pdf-marrel", "label": "Download the full catalogue entry (PDF)"}}, "van-der-pluym": {"artist": "Karel van der Pluym", "life": "1625 – Leiden – 1672", "title": "Tronie of a Man with a Tall, Fur-Edged Red Cap", "details": ["Oil on panel", "22 × 19 cm"], "lists": [["Provenance", ["Belgium, private collection"]]], "essay_heading": null, "essay": ["This small panel depicts the bust of an old man with a long grey beard and a striking red cap, set against a dark, neutral background. The figure is rendered frontally, the face built up with broad, direct brushstrokes, illuminated in strong chiaroscuro. The handling of the beard and cap is painterly and paste-like, while the facial features are summarily but effectively modelled. The lack of a detailed setting and the modest scale suggest the work was conceived not as a commissioned portrait, but as a study or tronie – a character study of a head or figure type rather than an identifiable individual, which became especially popular in the Rembrandt circle during the mid-seventeenth century. The motif of an old man with a red cap can be traced directly to Rembrandt van Rijn’s atelier practice and was widely adopted by his pupils, among them Karel van der Pluym.", "Karel van der Pluym (1625–1672) was a Leiden-born painter who received his artistic training in the circle of Rembrandt van Rijn. While little documentary evidence survives regarding his apprenticeship, stylistic affinities between his paintings and drawings and those of Rembrandt’s studio strongly suggest direct exposure to the master’s methods. The 1650s were a formative decade for Van der Pluym, during which he developed an idiom closely aligned with Rembrandt’s workshop practice while beginning to articulate his own independent style.", "The technical and stylistic evidence suggests that the present painting is best regarded as an early work by Karel van der Pluym. The panel’s vigorous brushwork, subtle pentimenti and warm tonalities correspond closely with other tronies attributed to Van der Pluym, while distinguishing it from the more mechanical repetitions typical of the broader Workshop of Rembrandt. The recent restoration has revived the intensity of the red cap, revealing its original vibrancy and the nuanced impasto that characterises its surface."], "pdf": {"id": "pdf-van-der-pluym", "label": "Download the full catalogue entry (PDF)"}}, "claesz": {"artist": "Pieter Claesz", "life": "Berchem near Antwerp, c. 1597 – 1660 Haarlem", "title": "Still Life with a Bread Roll, a Roemer and a Lying Berkemeyer, a Plate of Olives, a Knife, Oysters with Pepper and Salt on a Pewter Dish atop a Table", "details": ["Signed with monogram and dated lower left: PC 1642", "Oil on panel", "37.1 × 51.3 cm"], "lists": [["Provenance", ["Sale London, Christie’s, 8 October 1976, lot 16", "London, Alfred Brod Gallery, by 1977", "United States, Mr. and Mrs. J. Seward Johnson", "Sale New York, Sotheby’s, 8 January 1981, lot 9", "Sale New York, Christie’s, 15 January 1985, lot 36", "Private collection"]], ["Literature", ["Advertisement Brod Gallery, in: Apollo 105 (May 1977), p. 400, ill.", "Advertisement Brod Gallery, in: Die Weltkunst 47 (June 1977), p. 1147, ill.", "N.R.A. Vroom, A modest message as intimated by the painters of the ‘Monochrome Banketje’, 2 vols., Schiedam 1980, 1, p. 155; 2, p. 51, no. 242, ill.", "N.R.A. Vroom, A modest message as intimated by the painters of the ‘Monochrome Banketje’, Nuremberg 1999 (vol. 3 of Vroom 1980), p. 63, fig. 51, p. 81 (as Franchoys Elout)"]], ["Exhibited", ["Maastricht, Pictura, European Fine Art Fair, May 1977 (Brod Gallery London)"]]], "essay_heading": null, "essay": ["In the first half of the seventeenth century, Pieter Claesz was Haarlem’s most renowned still life painter. He was born in Berchem, near Antwerp, around 1597, and roughly in 1621 moved from the Southern Netherlands to the prosperous Haarlem. Claesz limited his use of objects and colour to develop his own style of still life: the monochrome banketje. He masterfully rendered materials such as silver and gold, pewter, ceramic, glass and various different foods, which he illuminated with an invisible source of bright light. Inventories of seventeenth-century Haarlem collections reveal Pieter Claesz as the most represented still life painter in the city. After a forty-year long career, he died in 1660 at 63, leaving an oeuvre of roughly 260 still lifes.", "Bright light flows in from the upper left and rests on all of the objects. The eye goes immediately to the big, crunchy bread roll on the left side of the table, illuminated by the warm mid-day light. On the right of the bread, an olive green Roemer filled with white wine dominates the composition. To the right of the Roemer, a smaller cone-shaped glass, a Berkemeyer, lies on its side giving the composition a strong diagonal pull. A large shiny plate with two oysters and a crumpled sheet from an almanac sits in front of the Berkemeyer, while the table knife with a precious mother-of-pearl patterned handle, one of the artist’s favourite motifs, cuts across the table and compellingly invites the viewer to take part in this intimate meal.", "In the ontbijtje dated 1642 here presented, we see the painter at the height of his mastery. Each object is impeccably placed within the composition. This painting belongs to a group of still lifes from the early 1640s that is characterized by the artist’s careful trimming of objects, ultimately culminating in a single free-standing monumental Roemer. Pieter Claesz pays here particular attention to the oysters, the perfect subject to suit his preference for a colour palette of chromatic minimalism, as they are symbols of status and wealth. He chooses not a “modest message” in his motifs and treatment of the paint, but rather gives us the perfect expression of refined artistic reflection. — Martina Brunner-Bulst"], "pdf": {"id": "pdf-claesz", "label": "Download the full catalogue entry (PDF)"}}, "van-de-velde": {"artist": "Jan van de Velde III", "life": "Haarlem 1620 – 1662 Enkhuizen or Amsterdam", "title": "Still Life with an Earthenware Jug, a Tortoise Shell Tobacco Box, a ‘Gouda’ Pipe, a Glass of Beer and Tobacco Smoking Implements", "details": ["Signed on the ledge: Jan vande velde Fecit, and dated 1658 with Amsterdam coat of arms on the belly of the jug", "Oil on panel", "38.1 × 29.8 cm"], "lists": [["Provenance", ["New York, Otto Naumann, Ltd.", "Bellevue (WA), collection Theleine Scheumann (1931-2021), since 1990", "Her sale, New York, Sotheby’s, 26 January 2023, lot 8"]]], "essay_heading": null, "essay": ["This beautiful intimate composition shows a white earthenware jug with a metal lid in the form of a cup and decorated with the coat of arms of Amsterdam, a long clay pipe from Gouda, a tortoise shell tobacco box, a glass of beer and a burning wick. Against a deep green background, these objects, lit from the left, are carefully composed, clustered together towards the left of a rustic wooden table. The artist contrasts translucent with solid materials, with the beautifully rendered translucent tortoise shell box, while the end of the wick can be glimpsed through the translucent medium of the beer. The cast shadows, such as those of the wick, draped over the pipe and hanging off the edge of the table, create a strong sense of three-dimensional objects in space.", "Van de Velde began his career under the influence of such Haarlem masters as Pieter Claesz (1597-1661), but soon developed his own style. He worked in Amsterdam from 1641 until the end of his life. The present painting is an exquisite example of the approximately only 40 paintings Van de Velde executed during his short career. Together with Jan Treck (c. 1606-1652) he introduced the present type of still life, the so-called ‘toebackje’, tobacco still life, with smokers’ paraphernalia, to Amsterdam. Although herbalists attributed healing effects to tobacco, as a stimulant it was identified with drunkenness and regarded as a sin. Bergström classifies this theme as a Vanitas still life where painter and viewer were supposed to reflect on the passage of all worldly things.", "A comparable painting, executed only eight years before in 1650, Still Life with a Stoneware Jug and Pipe, was acquired in 2019 for the collection of The National Gallery of Art in Washington. Another Still Life with Smokers’ Paraphernalia is in the collection of The Museum of Fine Arts in Budapest."], "pdf": {"id": "pdf-van-de-velde", "label": "Download the full catalogue entry (PDF)"}}, "rottenhammer": {"artist": "Hans Rottenhammer", "life": "Munich 1564 (?) – 1625 Augsburg", "title": "The Adoration of the Christ Child with Angels Carrying the Arma Christi", "details": ["Signed lower right: Gio. / Rottenhamer / Venetia 1601", "Oil on copper", "26.5 × 21 cm"], "lists": [["Provenance", ["South Germany, private collection"]], ["Literature", ["H. Schlichtenmaier, Studien zum Werk Hans Rottenhammers des Älteren (1564–1625), Maler und Zeichner : mit Werkkatalog, diss. Tübingen, Eberhard Karls Universität Tübingen 1988, pp. 109-110, 219, cat. no. G I 20", "M. Fahn, ‘Das Wiener Anbetungsrelief – ein Werk von Christoph und Zacharias Lencker’, in: R. Eikelmann, A. Schommers, L. Seelig (eds.), Studien zur europäischen Goldschmiedekunst des 14. bis 20. Jahrhunderts : Festschrift für Helmut Seling zum 80. Geburtstag am 12. Februar 2001, Munich 2001, pp. 39-50, pp. 40, 45-46, fig. 2", "M. Bisschoff, in: H. Borggrefe, M. Bisschoff, T. Fusenig, Hans Rottenhammer : begehrt, vergessen, neu entdeckt, exh. cat. Lemgo, Weserrenaissance-Museum Schloss Brake, Prague, Národní Galerie v Praze 2008-2009, pp. 66, 170, under cat. no. 77"]]], "essay_heading": null, "essay": ["His residence in Venice proved quintessential for Rottenhammer, whose previous Munich court contacts provided him with recommendations and access to the city’s high-end German collectors’ circles. Taking in the art of Titian and other Venetian artists such as Tintoretto (1518-1594), Veronese (1528-1588), the Bassani and Palma il Giovane (1548/50-1626), Rottenhammer specialised in delicate history paintings – often Biblical narratives – inspired by the Venetian masters’ output, yet in a personal style, often on small format, the most beautiful of them painted on copper support, allowing for the most delicate painterly effect, and exquisitely suitable for personal devotion.", "The present, newly resurfaced painting is precisely such a gem. Executed in Venice in 1601 – and not in the 1590s, as was previously assumed – the work is a marvel of finesse and intimacy, in which Rottenhammer shows all his capabilities in the rendering of flesh tones, coloristic nuances, atmospheric perspective, and the expression of both tenderness and emotional depth. In a landscape, against the immediate background of an antique columnated edifice, the Virgin Mary and Joseph, joined by nine angels, are grouped around the Christ Child, who lies in a crib, embracing a wooden cross with a banner carrying the initials INRI. Hovering above are three putti. Both the putti and the angels carry objects that specifically relate to Christ’s future crucifixion, the so-called Arma Christi, or Instruments of the Passion of Christ.", "Rottenhammer’s composition proved to be hugely popular. No less than eight versions – all unsigned – have come down to us, of which several might originate from Rottenhammer’s workshop, while others were presumably executed by other artists. A precious silver relief depicting the composition with minimal alterations, kept at the Kunsthistorisches Museum in Vienna, is signed by the goldsmiths Christoph Lencker (c. 1556-1613) and his son Zacharias Lencker (d. 1612) and dated 1609."], "pdf": {"id": "pdf-rottenhammer", "label": "Download the full catalogue entry (PDF)"}}}</script>
+<script>
+(function () {
+  var dlg = document.getElementById('entry-dialog');
+  if (!dlg || typeof dlg.showModal !== 'function') return;
+  var data = JSON.parse(document.getElementById('entry-data').textContent);
+  var textBox = document.getElementById('entry-text');
+  var img = document.getElementById('entry-img');
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function open(card) {
+    var d = data[card.getAttribute('data-entry')]; if (!d) return;
+    var src = card.querySelector('.painting-frame img');
+    img.src = src.getAttribute('src'); img.alt = src.alt;
+    textBox.innerHTML = '';
+    textBox.appendChild(el('div', 'entry-artist', d.artist));
+    textBox.appendChild(el('div', 'entry-life', d.life));
+    var t = el('h2', 'entry-title', d.title); t.id = 'entry-title'; textBox.appendChild(t);
+    var det = el('div', 'entry-details');
+    d.details.forEach(function (x, i) { if (i) det.appendChild(document.createElement('br')); det.appendChild(document.createTextNode(x)); });
+    textBox.appendChild(det);
+    textBox.appendChild(el('div', 'entry-rule'));
+    d.lists.forEach(function (pair) {
+      var b = el('div', 'entry-block'); b.appendChild(el('h3', null, pair[0]));
+      var ul = el('ul'); pair[1].forEach(function (x) { ul.appendChild(el('li', null, x)); });
+      b.appendChild(ul); textBox.appendChild(b);
+    });
+    if (d.essay && d.essay.length) {
+      var es = el('div', 'entry-essay');
+      if (d.essay_heading) es.appendChild(el('h3', null, d.essay_heading));
+      d.essay.forEach(function (p) { es.appendChild(el('p', null, p)); });
+      textBox.appendChild(es);
+    }
+    var pdf = document.getElementById(d.pdf.id);
+    if (pdf) {
+      var a = el('a', 'entry-pdf', d.pdf.label);
+      a.href = pdf.getAttribute('href');
+      if (pdf.getAttribute('download')) a.setAttribute('download', pdf.getAttribute('download'));
+      if (a.href.indexOf('data:') !== 0) { a.target = '_blank'; a.rel = 'noopener'; }
+      textBox.appendChild(a);
+    }
+    textBox.scrollTop = 0;
+    document.body.classList.add('entry-open');
+    dlg.showModal();
+  }
+  document.querySelectorAll('.painting-card.has-entry').forEach(function (card) {
+    card.addEventListener('click', function () { open(card); });
+    card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); } });
+  });
+  dlg.querySelector('.entry-close').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener('close', function () { document.body.classList.remove('entry-open'); });
+})();
+</script>
+
+<script>
+(function () {
+  document.querySelectorAll('[data-thumb]').forEach(function (img) {
+    var src = document.querySelector('[data-entry="' + img.getAttribute('data-thumb') + '"] .painting-frame img');
+    if (src) img.src = src.getAttribute('src');
+  });
+  document.querySelectorAll('.discovery[data-open]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var card = document.querySelector('[data-entry="' + b.getAttribute('data-open') + '"]');
+      if (card) card.click();
+    });
+  });
+})();
+</script>
+
+<dialog class="consult-dialog" id="consult-dialog" aria-labelledby="consult-title">
+  <button class="consult-close" type="button" aria-label="Close">&times;</button>
+  <form class="consult-form" novalidate>
+    <span class="consult-kicker">Salomon Lilian · Amsterdam &amp; Geneva</span>
+    <h2 class="consult-title" id="consult-title">Request a <em>consultation</em></h2>
+    <p class="consult-intro">Whether you wish to acquire a painting, sell or consign a work, or seek an opinion on attribution, we will be glad to arrange a private meeting in Amsterdam or Geneva, or to speak by telephone.</p>
+    <div class="consult-row">
+      <label>Name<input name="name" type="text" autocomplete="name" required></label>
+      <label>Email<input name="email" type="email" autocomplete="email" required></label>
+    </div>
+    <div class="consult-row">
+      <label><span>Telephone <span class="opt">(optional)</span></span><input name="phone" type="tel" autocomplete="tel"></label>
+      <label>Subject<select name="subject">
+        <option>Acquiring a painting</option>
+        <option>Selling or consigning a painting</option>
+        <option>Attribution and expertise</option>
+        <option>Visiting the gallery</option>
+        <option>Other</option>
+      </select></label>
+    </div>
+    <label class="consult-full">Preferred location<span class="consult-radios">
+      <label><input type="radio" name="place" value="Geneva" checked> Geneva</label>
+      <label><input type="radio" name="place" value="Amsterdam"> Amsterdam</label>
+      <label><input type="radio" name="place" value="By telephone or video call"> By telephone or video call</label>
+    </span></label>
+    <label class="consult-full">Message<textarea name="message" rows="4"></textarea></label>
+    <p class="consult-error" hidden>Please enter your name and a valid email address.</p>
+    <div class="consult-actions">
+      <button class="btn-primary" type="submit">Prepare my email</button>
+      <span class="consult-note">Opens your email application with your request addressed to <a href="mailto:salomonlilianoldmasters@gmail.com">salomonlilianoldmasters@gmail.com</a>.</span>
+    </div>
+    <p class="consult-privacy">Privacy notice: The information you provide is used solely to respond to your enquiry. It is never shared with third parties and is not kept longer than necessary. You may ask us to access or delete your data at any time by writing to <a href="mailto:salomonlilianoldmasters@gmail.com">salomonlilianoldmasters@gmail.com</a>.</p>
+    <div class="consult-phones">
+      <span>Or call Salomon Lilian</span>
+      <a href="tel:+33627812629">+33 627 812 629</a>
+    </div>
+  </form>
+</dialog>
+<script>
+(function () {
+  var dlg = document.getElementById('consult-dialog');
+  var form = dlg.querySelector('form');
+  var err = dlg.querySelector('.consult-error');
+  document.querySelectorAll('[data-consult]').forEach(function (b) {
+    b.addEventListener('click', function () { err.hidden = true; dlg.showModal(); });
+  });
+  dlg.querySelector('.consult-close').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = form.elements, name = f.name.value.trim(), email = f.email.value.trim();
+    if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { err.hidden = false; return; }
+    err.hidden = true;
+    var place = form.querySelector('input[name=place]:checked').value;
+    var body = 'Dear Salomon Lilian,\n\n' + (f.message.value.trim() || 'I would like to request a consultation.') +
+      '\n\nSubject: ' + f.subject.value + '\nPreferred location: ' + place +
+      '\n\nName: ' + name + '\nEmail: ' + email + (f.phone.value.trim() ? '\nTelephone: ' + f.phone.value.trim() : '');
+    window.location.href = 'mailto:salomonlilianoldmasters@gmail.com?subject=' + encodeURIComponent('Consultation request – ' + f.subject.value) +
+      '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
+</body>
+</html>
