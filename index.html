@@ -343,7 +343,7 @@
   .press-btn:hover, .press-btn:focus-visible { background: var(--gold); color: var(--ink); }
   .press-list { list-style: none; margin-top: 8px; }
   .press-item { border-bottom: 1px solid var(--stone); }
-  .press-item a {
+  .press-item > a {
     display: grid; grid-template-columns: 220px 1fr auto; gap: 32px; align-items: baseline;
     padding: 26px 0; text-decoration: none; color: inherit;
   }
@@ -352,7 +352,10 @@
   .press-headline { font-family: 'Cormorant Garant', serif; font-style: italic; font-size: 21px; color: var(--ivory); margin-bottom: 6px; transition: color 0.3s; }
   .press-summary { font-size: 12px; line-height: 1.8; color: var(--mist); }
   .press-arrow { color: var(--gold); font-size: 14px; }
-  .press-item a:hover .press-headline { color: var(--gold); }
+  .press-item > a:hover .press-headline { color: var(--gold); }
+  .press-also { margin: -14px 0 0 252px; padding-bottom: 22px; font-size: 11px; color: var(--mist); }
+  .press-also a { color: var(--gold); text-decoration: none; }
+  .press-also a:hover { text-decoration: underline; }
   .press-friend { margin-top: 40px; font-size: 11px; letter-spacing: 1px; color: var(--mist); }
   .press-friend a { color: var(--gold); text-decoration: none; }
   .press-dialog {
@@ -377,7 +380,8 @@
     .press-wrap { padding: 72px 24px; }
     .press-feature { grid-template-columns: 1fr; gap: 32px; }
     .press-quote { font-size: 27px; }
-    .press-item a { grid-template-columns: 1fr; gap: 8px; }
+    .press-item > a { grid-template-columns: 1fr; gap: 8px; }
+    .press-also { margin: -12px 0 0; }
     .press-arrow { display: none; }
     .press-dialog-body { padding: 56px 22px 32px; }
     .press-dialog h2 { font-size: 27px; }
@@ -939,7 +943,7 @@
         <span class="press-source">The Nivaagaard Collection<span>March 2023</span></span>
         <span><span class="press-headline" style="display:block">Rare art discovery after nearly 200 years: lost mother reunited with her husband and son</span><span class="press-summary">Cornelis de Vos’ Portrait of a Lady, restored by Salomon Lilian after its purchase, is identified as the missing mother of the museum’s double portrait of a father and son – found thanks to its illustration in the gallery’s CODART interview.</span></span>
         <span class="press-arrow" aria-hidden="true">→</span>
-      </a></li>
+      </a><p class="press-also">Also reported by <a href="https://www.theartnewspaper.com/2023/03/10/art-history-sleuths-reunite-mother-with-husband-and-son-in-17th-century-flemish-portrait" target="_blank" rel="noopener">The Art Newspaper</a>, <a href="https://news.artnet.com/art-world/nivaagaard-collection-cornelis-de-vos-family-portrait-reunited-2270241" target="_blank" rel="noopener">Artnet</a> and <a href="https://www.dawn.com/news/1742642" target="_blank" rel="noopener">AFP</a>.</p></li>
       <li class="press-item reveal"><a href="https://www.sothebys.com/en/articles/salomon-lilian-gallery-geneva" target="_blank" rel="noopener">
         <span class="press-source">Sotheby’s<span>12 June 2020</span></span>
         <span><span class="press-headline" style="display:block">Salomon Lilian Gallery, Geneva</span><span class="press-summary">A portrait of the gallery, “one of the leading international dealers and experts in the field of Old Masters”, with works sold to the Rijksmuseum, the Mauritshuis and the Cleveland Museum of Art.</span></span>
