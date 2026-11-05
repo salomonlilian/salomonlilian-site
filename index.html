@@ -369,8 +369,11 @@
   .press-also { margin: -14px 0 0 252px; padding-bottom: 22px; font-size: 11px; color: var(--mist); }
   .press-also a { color: var(--gold); text-decoration: none; }
   .press-also a:hover { text-decoration: underline; }
-  .press-friend { margin-top: 40px; font-size: 11px; letter-spacing: 1px; color: var(--mist); }
+  .press-friend { margin-top: 44px; display: flex; align-items: center; gap: 28px; font-size: 11px; letter-spacing: 1px; line-height: 1.8; color: var(--mist); }
   .press-friend a { color: var(--gold); text-decoration: none; }
+  .press-friend .codart-logo { flex: none; display: block; }
+  .press-friend .codart-logo img { display: block; width: 104px; height: auto; }
+  @media (max-width: 600px) { .press-friend { flex-direction: column; align-items: flex-start; gap: 18px; } }
   .press-dialog {
     width: min(760px, calc(100vw - 32px)); max-height: calc(100vh - 32px); margin: auto; padding: 0;
     border: 1px solid var(--stone); background: var(--ink); color: var(--ivory);
@@ -993,7 +996,10 @@
         <span class="press-arrow" aria-hidden="true">→</span>
       </a></li>
     </ul>
-    <p class="press-friend reveal">Salomon Lilian is a proud Friend of <a href="https://www.codart.nl/" target="_blank" rel="noopener">CODART</a>, the international network of curators of Dutch and Flemish art.</p>
+    <div class="press-friend reveal">
+      <a class="codart-logo" href="https://www.codart.nl/" target="_blank" rel="noopener"><img src="images/friends-of-codart-logo.png" alt="Friends of CODART Foundation" width="104" height="81" loading="lazy"></a>
+      <p>Salomon Lilian has been a Business Sponsor of the <a href="https://www.codart.nl/" target="_blank" rel="noopener">Friends of CODART Foundation</a> since 2015, supporting the international network of curators of Dutch and Flemish art.</p>
+    </div>
   </div>
 </div>
 
