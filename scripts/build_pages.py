@@ -32,6 +32,19 @@ SLUGS = {
 # research entries about a painting that already has its own page: no separate page
 NO_PAGE = {"rubens-hercules-infrared"}
 
+# other spellings under which collectors and art historians search for these painters
+ALSO_KNOWN = {
+    "Jacob Adriaensz Backer": ["Jacob Backer", "Jacob Adriaensz. Backer"],
+    "Pieter Verelst": ["Pieter Harmensz. Verelst", "Pieter Harmensz Verelst"],
+    "Jan van de Velde III": ["Jan Jansz. van de Velde", "Jan Jansz van de Velde III"],
+    "Job Berckheyde": ["Job Adriaensz. Berckheyde", "Job Berckheijde"],
+    "Jacob Marrel": ["Jacob Marrell", "Jacobus Marrellus"],
+    "Karel van der Pluym": ["Carel van der Pluym", "Karel van der Pluijm"],
+    "Salomon van Ruysdael": ["Salomon van Ruisdael", "Salomon Jacobsz. van Ruysdael"],
+    "Hans Rottenhammer": ["Johann Rottenhammer", "Hans Rottenhammer the Elder"],
+    "Michael Sweerts": ["Michiel Sweerts"],
+}
+
 GALLERY = {
     "@type": "ArtGallery",
     "@id": SITE + "/#gallery",
@@ -115,7 +128,8 @@ def jsonld(key, d, imgs, url, title):
         "image": SITE + "/" + imgs[key][0],
         "description": meta_desc(d),
         "artform": "Painting",
-        "creator": {"@type": "Person", "name": d["artist"], "description": d["life"]}
+        "creator": {"@type": "Person", "name": d["artist"], "description": d["life"],
+                    **({"alternateName": ALSO_KNOWN[d["artist"]]} if d["artist"] in ALSO_KNOWN else {})}
         if d["artist"] != "Swabian School" else {"@type": "Organization", "name": "Swabian School"},
         "provider": {"@id": SITE + "/#gallery"},
     }
@@ -155,6 +169,7 @@ main{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:72px;
 .media img{max-width:100%;max-height:78vh;height:auto;display:block}
 .artist{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
 .life{font-size:11px;letter-spacing:1px;color:var(--mist);margin-top:8px}
+.aka{font-size:10px;letter-spacing:.5px;color:var(--mist);opacity:.8;margin-top:4px;font-style:italic}
 h1{font-family:'Cormorant Garant',serif;font-weight:300;font-style:italic;font-size:40px;line-height:1.15;margin:22px 0 24px}
 .details{list-style:none;margin-bottom:32px}
 .details li{font-size:12px;color:var(--ivory);opacity:.82;line-height:1.8}
@@ -187,6 +202,8 @@ def page(key, d, imgs, hidden, pdfs, all_items):
     doc_title = f"{d['artist']}, {title} | Salomon Lilian Dutch Old Master Paintings"
     parts = []
     parts.append(f'<p class="artist">{e(d["artist"])}</p><p class="life">{e(d["life"])}</p>')
+    if d["artist"] in ALSO_KNOWN:
+        parts.append(f'<p class="aka">Also known as {e(" · ".join(ALSO_KNOWN[d["artist"]]))}</p>')
     parts.append(f'<h1>{e(d["title"])}</h1>')
     parts.append('<ul class="details">' + "".join(f"<li>{e(x)}</li>" for x in d["details"]) + "</ul>")
     essay = []
