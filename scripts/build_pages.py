@@ -29,6 +29,9 @@ SLUGS = {
     "peeters-bouquet": "clara-peeters-a-bouquet-of-flowers-in-a-roemer-glass",
 }
 
+# research entries about a painting that already has its own page: no separate page
+NO_PAGE = {"rubens-hercules-infrared"}
+
 GALLERY = {
     "@type": "ArtGallery",
     "@id": SITE + "/#gallery",
@@ -248,7 +251,8 @@ def page(key, d, imgs, hidden, pdfs, all_items):
 
 
 def main():
-    data, imgs, hidden, pdfs = load()
+    alldata, imgs, hidden, pdfs = load()
+    data = {k: v for k, v in alldata.items() if k not in NO_PAGE}
     missing = set(data) - set(SLUGS)
     if missing:
         raise SystemExit(f"Add a slug in SLUGS for: {', '.join(sorted(missing))}")
@@ -258,7 +262,10 @@ def main():
     m = re.search(r'(id="entry-data">)(.*?)(</script>)', src, re.S)
     for k in data:
         data[k]["page"] = f"/works/{SLUGS[k]}/"
-    src = src[: m.start(2)] + json.dumps(data, ensure_ascii=False) + src[m.end(2):]
+    for k in NO_PAGE:
+        if k in alldata:
+            alldata[k].pop("page", None)
+    src = src[: m.start(2)] + json.dumps(alldata, ensure_ascii=False) + src[m.end(2):]
     idx.write_text(src, encoding="utf-8")
     items = [(k, data[k]["artist"], short_title(k, data[k], imgs)) for k in data]
     items.sort(key=lambda x: (x[1], x[2]))
