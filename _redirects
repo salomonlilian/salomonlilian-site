@@ -1,0 +1,26 @@
+# Old website addresses -> new pages (301 = permanent, keeps Google ranking)
+
+# Renamed PDFs on the current site
+/files/Berckheyde-Old-Stock-Exchange-Amsterdam.pdf  /files/Job-Berckheyde-View-of-the-Old-Stock-Exchange-at-Amsterdam.pdf  301
+/files/Lievens-Tronie-of-a-Bearded-Old-Man.pdf       /files/Jan-Lievens-Salomon-Lilian.pdf  301
+
+# Old artist pages -> the matching painting page
+/gallery/pieter-claesz/*          /works/pieter-claesz-still-life-with-a-roemer-and-oysters-1642/  301
+/gallery/jan-lievens/*            /works/jan-lievens-tronie-of-a-bearded-old-man-in-profile/  301
+/gallery/jacob-backer/*           /works/jacob-backer-tronie-of-a-bearded-man-with-a-large-beret/  301
+/gallery/salomon-van-ruysdael/*   /works/salomon-van-ruysdael-a-river-view-with-a-bastion-1645/  301
+/gallery/michael-sweerts/*        /works/michael-sweerts-backgammon-players-in-an-interior/  301
+/gallery/jacob-marrel/*           /works/jacob-marrel-a-tulip-mania-painting/  301
+/gallery/job-berckheyde/*         /works/job-berckheyde-view-of-the-old-stock-exchange-amsterdam/  301
+/gallery/hans-rottenhammer/*      /works/hans-rottenhammer-adoration-of-the-christ-child-with-angels/  301
+/gallery/pieter-verelst/*         /works/pieter-verelst-self-portrait-with-a-black-beret/  301
+/gallery/karel-van-der-pluym/*    /works/karel-van-der-pluym-tronie-of-a-man-with-a-red-cap/  301
+/gallery/peter-paul-rubens/*      /works/peter-paul-rubens-hercules-as-a-gladiator/  301
+
+# Everything else from the old site -> home page
+/gallery/*          /  301
+/gallery            /  301
+/fairs/*            /  301
+/fairs              /  301
+/assets/*           /  301
+/DesktopDefault.aspx  /  301
